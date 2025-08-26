@@ -738,6 +738,7 @@ td {
 
 
 .disabled {
+    outline: none;
     border: none !important;
     color: #fff !important;
     cursor: not-allowed !important;
