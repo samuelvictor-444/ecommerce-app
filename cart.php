@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <script src="script.js"></script>
     <link href=" https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.min.css " rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="assets/javascript/jquery.js"></script>
@@ -13,11 +12,15 @@
     <link rel="stylesheet" href="assets/css/productCss/cart_p.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/category.css">
+    <script src="assets/javascript/header_script.js"></script>
     <style>
         body {
             background-color: #f1f1f2;
         }
     </style>
+
+
 </head>
 
 <body>
@@ -53,7 +56,7 @@
         <!-- CONTAINER THAT DISPLAY EMPTY CART BOX TO THE USER  -->
 
         <div class="empty_cart_box">
-            <img src="../images/cart.668e6453.svg" alt="" height="100" width="100">
+            <img src="assets/images/cart.668e6453.svg" alt="" height="100" width="100">
             <h2 class="-Pwy">Your cart is empty!</h2>
             <p class="-lh-15">Browse our categories and discover our best deals!</p>
             <button id="_start_shopping" class="_start_shopping_p">start shopping</button>
@@ -288,166 +291,7 @@
 
         <!----------------------------------------- CONTANINER THAT DISPLAY CART PRODUCT TO THE USERS---------------------------------------------->
 
-
-        <!------- TOP CONTAINER BANNER WRAPPER --->
-
-        <div class="top-container-wrapper display_n">
-            <div class="top-header-section">
-                <h2>Top selling items</h2>
-                <a href="">see all <i class="ri-arrow-right-s-line"></i></a>
-            </div>
-            <!---- javascript carousel slider----->
-            <div class="container-slider-box">
-                <div class="carousel-slider-container--">
-                    <button id="prev-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path
-                                d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
-                            </path>
-                        </svg></button>
-
-                    <div class="product-list image-list">
-                        <a href="product_check.php">
-                            <div class="product-garllery">
-                                <img src="../images/asion.jpg" alt="">
-                                <div class="name">
-                                    <p>ASHION 2024 Men's Casual Shoes Big Size 39-47</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/ph.jpg" alt="">
-                                <div class="name">
-                                    <p>Nokia C31 - 6.75" HD+ - 3GB/32GB MEMORY- 4G LTE- 5050mAh- Mint</p>
-                                    <div class="price"><strong>&#x20A6; 83,930</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 99,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/del.jpg" alt="">
-                                <div class="name">
-                                    <p>ECOFLOW DELTA 2 Portable Power Station With 1-3kWh Expandable Capacity, LFP
-                                        Battery, Fast Charging, For Home Backup Power, Camping & RVs</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/bluetooth.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/keyb.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/po.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/oo.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/pac8.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/pac4.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/pac10.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/pac6.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <button id="next-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path
-                                d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z">
-                            </path>
-                        </svg></button>
-                    <div class="slider-scrollbarC slider-scrollbar">
-                        <div class="scrollbar-trackC">
-                            <div class="scrollbar-thumbC scrollbar-thumb"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---- javascript carousel slider----->
-        </div>
-        <!------- TOP CONTAINER BANNER WRAPPER --->
-
-        <div class="top-container-wrapper rec">
+        <div class="top-container-wrapper rec" id="recently_viewed">
             <div class="top-header-section --limi">
                 <div class="mq">
                     <h2>Recently Vewied Product</h2>
@@ -457,149 +301,12 @@
             <!---- javascript carousel slider----->
             <div class="container-slider-box">
                 <div class="carousel-slider-container--">
-                    <button id="prev-slide" class="slide-buttons slide-buttonCli"><svg
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24"
-                            width="24">
-                            <path
-                                d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
-                            </path>
-                        </svg></button>
 
-                    <div class="product-list image-listsCli">
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/watch.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
+                    <div class="product-list image-listsCli" id="wrp_recent">
 
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/indomie.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/speaker.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/bluetooth.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../productImg/dano.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/po.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/keyb.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/kk.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/nutri.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/kids.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="">
-                            <div class="product-garllery">
-                                <img src="../images/oo.jpg" alt="">
-                                <div class="name">
-                                    <p>Ace Elec 20000 MAh Ultra Slim Portable Power Bank.</p>
-                                    <div class="price"><strong>&#x20A6; 6,230</strong></div>
-                                    <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
-                                </div>
-                            </div>
-                        </a>
+                    
                     </div>
 
-                    <button id="next-slide" class="slide-buttons slide-buttonCli"><svg
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24"
-                            width="24">
-                            <path
-                                d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z">
-                            </path>
-                        </svg></button>
-                    <div class="slider-scrollbarC slider-scrollbarCli">
-                        <div class="scrollbar-trackC">
-                            <div class="scrollbar-thumbC scrollbar-thumbsCli"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!---- javascript carousel slider----->
@@ -651,9 +358,11 @@
         });
     </script>
     <script src="assets/javascript/searchProduct.js"></script>
-       <script src="assets/javascript/subcribe.js"></script>
+    <script src="assets/javascript/subcribe.js"></script>
     <script src="assets/javascript/getCartQty.js"></script>
-    
+    <script src="assets/javascript/loadSliderImages.js"></script>
+    <script src="assets/javascript/getRecentlyViewed.js"></script>
+
 </body>
 
 </html>
