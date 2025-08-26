@@ -250,7 +250,6 @@ function renderProduct(product) {
       container.innerHTML = ""; // clear if needed
       container.appendChild(buildVariationGroups().cloneNode(true));
     });
-
   }
 
   // add product to cart
@@ -340,10 +339,7 @@ function renderProduct(product) {
             // const incrementBtn = box.querySelector(".increment");
             // const decrementBtn = box.querySelector(".decrement");
 
-           
-
             setTimeout(() => {
-      
               addToCartBtn.style.display = "none";
               quantitySpan.textContent = "1";
               box.style.display = "flex";
@@ -498,11 +494,15 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
           quantitySpan.appendChild(spinner);
 
           setTimeout(() => {
+            if (quantitySpan.contains(spinner)) {
+              quantitySpan.removeChild(spinner);
+            }
+
             quantitySpan.textContent = quantity;
 
-            btn.removeAttribute("disabled", true);
+            btn.removeAttribute("disabled");
             decrement.removeAttribute("disabled");
-            goToCartBtn.removeAttribute("disabled", true);
+            goToCartBtn.removeAttribute("disabled");
 
             btn.classList.remove("updating");
             decrement.classList.remove("updating");
@@ -553,16 +553,20 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
             goToCartBtn.classList.add("updating");
 
             const spinner = document.createElement("span");
-            spinner.classList.add("spin");
+            spinner.classList.add("spin", "disp");
 
             quantitySpan.appendChild(spinner);
 
             setTimeout(() => {
+              if (quantitySpan.contains(spinner)) {
+                quantitySpan.removeChild(spinner);
+              }
+
               quantitySpan.textContent = quantity;
 
-              btn.removeAttribute("disabled", true);
-              increment.removeAttribute("disabled", true);
-              goToCartBtn.removeAttribute("disabled", true);
+              btn.removeAttribute("disabled");
+              increment.removeAttribute("disabled");
+              goToCartBtn.removeAttribute("disabled");
 
               btn.classList.remove("updating");
               increment.classList.remove("updating");
@@ -597,9 +601,10 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
                 );
 
                 if (!hasOtherQuantities) {
-                  goToCartBtn.classList.remove("activate");
                   goToCartBtn.removeEventListener("click", handleGoToCartClick);
+                  goToCartBtn.classList.add("disabled");
                 } else if (hasOtherQuantities) {
+                  goToCartBtn.classList.remove("disabled");
                   goToCartBtn.addEventListener("click", handleGoToCartClick);
                 }
               }
@@ -1176,7 +1181,6 @@ function scrollSlider(container, btns) {
   updateBtn(); // initial call
 }
 
-
 function locationSelection(defaultLGA = "Ikeja") {
   const stateSelects = document.querySelectorAll(".state_locale");
   const lgaSelects = document.querySelectorAll(".select-lga");
@@ -1222,7 +1226,7 @@ function locationSelection(defaultLGA = "Ikeja") {
 
   // Pair state & LGA dropdowns by index
   stateSelects.forEach((stateSelect, index) => {
-    const lgaDropdown = lgaSelects[index]; 
+    const lgaDropdown = lgaSelects[index];
     if (!lgaDropdown) return;
 
     // On state change → load LGAs
@@ -1243,7 +1247,6 @@ function locationSelection(defaultLGA = "Ikeja") {
     });
   });
 }
-
 
 async function fetchDeliveryOptions(stateSelect, lga) {
   try {
