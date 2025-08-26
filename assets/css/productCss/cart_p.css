@@ -30,7 +30,8 @@
        width: 87%;
        border-radius: 4px;
        position: relative;
-   }
+   } 
+   
 
    .top-container-wrapper:hover #right {
        display: flex;
