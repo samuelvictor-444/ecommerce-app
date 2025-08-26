@@ -5,23 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link rel="stylesheet" href="../includes/header.css" />
-    <link rel="stylesheet" href="../includes/footer.css" />
-    <link rel="stylesheet" href="assets/css/productCss/styles.css">
-    <link rel="stylesheet" href="assets/css/productCss/cart_p.css">
     <script src="script.js"></script>
     <link href=" https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.min.css " rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../jquery1.js"></script>
-    <script src="../includes/loader.js"></script>
-    <link rel="stylesheet" href="../includes/loader.css">
+    <script src="assets/javascript/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/productCss/styles.css">
+    <link rel="stylesheet" href="assets/css/productCss/cart_p.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <style>
+        body {
+            background-color: #f1f1f2;
+        }
+    </style>
 </head>
 
 <body>
-    <?php include '../includes/header.php' ?>
-    <?php include '../includes/loader.php' ?>
-    <div class="body_container_wrapper" id="bb">
+    <?php include './includes/header.php' ?>
+
+    <div class="body_container_wrapper">
 
         <!-- mobile check out section  -->
         <div class="mobile_check_out">
@@ -60,7 +62,7 @@
         <!-- ENDS CONTAINER THAT DISPLAY EMPTY CART BOX TO THE USER  -->
 
 
-<!----------------------------------------- CONTANINER THAT DISPLAY CART PRODUCT TO THE USERS---------------------------------------------->
+        <!----------------------------------------- CONTANINER THAT DISPLAY CART PRODUCT TO THE USERS---------------------------------------------->
 
         <div class="product_added_container">
             <div class="clo_4">
@@ -90,19 +92,24 @@
                         </div>
                     </a>
                     <section class="bt">
-                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                <path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path>
+                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24" fill="currentColor">
+                                <path
+                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
+                                </path>
                             </svg>Remove</button>
 
                         <form action="" method="post" class="-mal">
                             <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M5 11h14v2H5z"></path>
                                 </svg>
                             </button>
                             <span class="incre">1</span>
                             <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
                                 </svg>
                             </button>
@@ -134,19 +141,24 @@
                     </a>
                     <section class="bt">
                         <button class="btns_" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                <path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="currentColor">
+                                <path
+                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
+                                </path>
                             </svg>Remove</button>
 
                         <form action="" method="post" class="-mal">
                             <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M5 11h14v2H5z"></path>
                                 </svg>
                             </button>
                             <span class="incre">1</span>
                             <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
                                 </svg>
                             </button>
@@ -178,19 +190,24 @@
                     </a>
                     <section class="bt">
                         <button class="btns_" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                <path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                fill="currentColor">
+                                <path
+                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
+                                </path>
                             </svg>Remove</button>
 
                         <form action="" method="post" class="-mal">
                             <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M5 11h14v2H5z"></path>
                                 </svg>
                             </button>
                             <span class="incre">1</span>
                             <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
                                 </svg>
                             </button>
@@ -205,7 +222,8 @@
                         </div>
 
                         <div class="main_">
-                            <h3 class="name">NIVEA Pearl & Beauty Anti-Perspirant Roll-on For Women 48h - 50ml (Pack Of 2)</h3>
+                            <h3 class="name">NIVEA Pearl & Beauty Anti-Perspirant Roll-on For Women 48h - 50ml (Pack Of
+                                2)</h3>
                             <p class="status">in stock</p>
                             <p class="status_"><span id="label">Seller :</span>FREE KNIGHT STORE</p>
                             <p id="unit_left">Few uints left</p>
@@ -221,19 +239,24 @@
                         </div>
                     </a>
                     <section class="bt">
-                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                <path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path>
+                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24" fill="currentColor">
+                                <path
+                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
+                                </path>
                             </svg>Remove</button>
 
                         <form action="" method="post" class="-mal">
                             <button id="" class="_qty" value="" type="button" disabled>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M5 11h14v2H5z"></path>
                                 </svg>
                             </button>
                             <span class="incre">1</span>
                             <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    style="fill: rgba(0, 0, 0, 1);">
                                     <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
                                 </svg>
                             </button>
@@ -263,7 +286,7 @@
             </div>
         </div>
 
-<!----------------------------------------- CONTANINER THAT DISPLAY CART PRODUCT TO THE USERS---------------------------------------------->
+        <!----------------------------------------- CONTANINER THAT DISPLAY CART PRODUCT TO THE USERS---------------------------------------------->
 
 
         <!------- TOP CONTAINER BANNER WRAPPER --->
@@ -276,8 +299,11 @@
             <!---- javascript carousel slider----->
             <div class="container-slider-box">
                 <div class="carousel-slider-container--">
-                    <button id="prev-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path>
+                    <button id="prev-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
+                            <path
+                                d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
+                            </path>
                         </svg></button>
 
                     <div class="product-list image-list">
@@ -307,7 +333,8 @@
                             <div class="product-garllery">
                                 <img src="../images/del.jpg" alt="">
                                 <div class="name">
-                                    <p>ECOFLOW DELTA 2 Portable Power Station With 1-3kWh Expandable Capacity, LFP Battery, Fast Charging, For Home Backup Power, Camping & RVs</p>
+                                    <p>ECOFLOW DELTA 2 Portable Power Station With 1-3kWh Expandable Capacity, LFP
+                                        Battery, Fast Charging, For Home Backup Power, Camping & RVs</p>
                                     <div class="price"><strong>&#x20A6; 6,230</strong></div>
                                     <div class="old-price"><del><small>&#x20A6; 15,000</small></del></div>
                                 </div>
@@ -403,8 +430,11 @@
                         </a>
                     </div>
 
-                    <button id="next-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path>
+                    <button id="next-slide" class="slide-buttons slide-button"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
+                            <path
+                                d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z">
+                            </path>
                         </svg></button>
                     <div class="slider-scrollbarC slider-scrollbar">
                         <div class="scrollbar-trackC">
@@ -427,8 +457,12 @@
             <!---- javascript carousel slider----->
             <div class="container-slider-box">
                 <div class="carousel-slider-container--">
-                    <button id="prev-slide" class="slide-buttons slide-buttonCli"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path>
+                    <button id="prev-slide" class="slide-buttons slide-buttonCli"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24"
+                            width="24">
+                            <path
+                                d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
+                            </path>
                         </svg></button>
 
                     <div class="product-list image-listsCli">
@@ -554,8 +588,12 @@
                         </a>
                     </div>
 
-                    <button id="next-slide" class="slide-buttons slide-buttonCli"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24" width="24">
-                            <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path>
+                    <button id="next-slide" class="slide-buttons slide-buttonCli"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="24"
+                            width="24">
+                            <path
+                                d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z">
+                            </path>
                         </svg></button>
                     <div class="slider-scrollbarC slider-scrollbarCli">
                         <div class="scrollbar-trackC">
@@ -571,42 +609,51 @@
         <div class="over_lay">
             <section>
                 <button id="r_mon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                        <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                        fill="currentColor">
+                        <path
+                            d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z">
+                        </path>
                     </svg>
                 </button>
                 <h2 id="he_text">Returns are easy</h2>
                 <div class="_f16_no">
-                    To know more about our return and refund policy, please visit: https://www.jumia.com.ng/sp-returns-refunds
+                    To know more about our return and refund policy, please visit:
+                    https://www.jumia.com.ng/sp-returns-refunds
                 </div>
             </section>
         </div>
 
     </div>
-    <?php include '../includes/footer.php' ?>
+    <?php include './includes/footer.php' ?>
+
 
 
     <script>
-        $(document).ready(function() {
-            $('._start_shopping_p').click(function() {
+        $(document).ready(function () {
+            $('._start_shopping_p').click(function () {
                 $(location).attr('href', 'index.php')
             });
 
-            $('#_deta').click(function() {
+            $('#_deta').click(function () {
                 $('.over_lay').css('display', 'flex');
                 $('.over_lay').fadeIn();
             });
 
-            $('.over_lay').click(function() {
+            $('.over_lay').click(function () {
                 $('.over_lay').css('display', 'none');
                 $('.over_lay').fadeOut();
             });
 
-            $('#_tel_pho').click(function() {
+            $('#_tel_pho').click(function () {
                 $(location).attr('href', 'tel:09037870902');
             });
         });
     </script>
+    <script src="assets/javascript/searchProduct.js"></script>
+       <script src="assets/javascript/subcribe.js"></script>
+    <script src="assets/javascript/getCartQty.js"></script>
+    
 </body>
 
 </html>
