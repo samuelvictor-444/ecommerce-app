@@ -93,7 +93,7 @@
 <div class="sticky">
     <div class="container_banner_3">
         <div class="icon_logo">
-            <a href="http://localhost:3000/usman_clothing_service/">
+            <a href="http://localhost/usman_clothing_service/">
                 <img src="assets/images/logo.png" alt="">
             </a>
         </div>
