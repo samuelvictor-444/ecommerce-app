@@ -72,200 +72,9 @@
                 <header class="-pvs">
                     <h2>Cart (4)</h2>
                 </header>
-                <article class="_product_added dr" id="product_c">
-                    <a href="product_check.php" id="core">
-                        <div class="img-c">
-                            <img src="../images/parrotrice.jpg" alt="" width="72" height="72">
-                        </div>
 
-                        <div class="main_">
-                            <h3 class="name">Qasa 16" 5 Blade Solar Standing Fan + Solar Panel</h3>
-                            <p class="status">in stock</p>
-                            <p class="status_"><span id="label">Seller :</span> Aba Price</p>
-                            <p id="unit_left">Few uints left</p>
-                            <div class="ft"><img src="../images/crat.png" alt=""></div>
-                        </div>
+                <div class="added_cart"> </div>
 
-                        <div class="sd_">
-                            <div class="price_"> &#x20A6; 86,900</div>
-                            <div class="src_pr">
-                                <div class="old_p">&#x20A6; 115,000</div>
-                                <div class="srg_h">24%</div>
-                            </div>
-                        </div>
-                    </a>
-                    <section class="bt">
-                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                height="24" fill="currentColor">
-                                <path
-                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
-                                </path>
-                            </svg>Remove</button>
-
-                        <form action="" method="post" class="-mal">
-                            <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
-                            <span class="incre">1</span>
-                            <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </form>
-                    </section>
-                </article>
-
-                <article class="_product_added dr" id="product_c">
-                    <a href="product_check.php" id="core">
-                        <div class="img-c">
-                            <img src="../images/asion.jpg" alt="" width="72" height="72">
-                        </div>
-
-                        <div class="main_">
-                            <h3 class="name">ASHION 2024 Men's Casual Shoes Big Size 39-47</h3>
-                            <p class="status">in stock</p>
-                            <p class="status_"><span id="label">Seller :</span>SAMUEL OKHOIGBE</p>
-                            <p id="unit_left">Few uints left</p>
-                            <div class="ft"><img src="../images/crat.png" alt=""></div>
-                        </div>
-
-                        <div class="sd_">
-                            <div class="price_"> &#x20A6; 6,230</div>
-                            <div class="src_pr">
-                                <div class="old_p">&#x20A6; 15,000</div>
-                                <div class="srg_h">24%</div>
-                            </div>
-                        </div>
-                    </a>
-                    <section class="bt">
-                        <button class="btns_" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
-                                </path>
-                            </svg>Remove</button>
-
-                        <form action="" method="post" class="-mal">
-                            <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
-                            <span class="incre">1</span>
-                            <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </form>
-                    </section>
-                </article>
-
-                <article class="_product_added dr" id="product_c">
-                    <a href="" id="core">
-                        <div class="img-c">
-                            <img src="../images/school.jpg" alt="" width="72" height="72">
-                        </div>
-
-                        <div class="main_">
-                            <h3 class="name">Backpack Casual Laptop School Bag</h3>
-                            <p class="status">in stock</p>
-                            <p class="status_"><span id="label">Seller :</span>FREE KNIGHT STORE</p>
-                            <p id="unit_left">Few uints left</p>
-                            <div class="ft"><img src="../images/crat.png" alt=""></div>
-                        </div>
-
-                        <div class="sd_">
-                            <div class="price_"> &#x20A6; 6,256</div>
-                            <div class="src_pr">
-                                <div class="old_p">&#x20A6; 12,900</div>
-                                <div class="srg_h">52%</div>
-                            </div>
-                        </div>
-                    </a>
-                    <section class="bt">
-                        <button class="btns_" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
-                                </path>
-                            </svg>Remove</button>
-
-                        <form action="" method="post" class="-mal">
-                            <button id="" class="_qty" value="" type="button" disabled="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
-                            <span class="incre">1</span>
-                            <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </form>
-                    </section>
-                </article>
-
-                <article class="_product_added dr" id="product_c">
-                    <a href="" id="core">
-                        <div class="img-c">
-                            <img src="../images/nio.jpg" alt="" width="72" height="72">
-                        </div>
-
-                        <div class="main_">
-                            <h3 class="name">NIVEA Pearl & Beauty Anti-Perspirant Roll-on For Women 48h - 50ml (Pack Of
-                                2)</h3>
-                            <p class="status">in stock</p>
-                            <p class="status_"><span id="label">Seller :</span>FREE KNIGHT STORE</p>
-                            <p id="unit_left">Few uints left</p>
-                            <div class="ft"><img src="../images/crat.png" alt=""></div>
-                        </div>
-
-                        <div class="sd_">
-                            <div class="price_"> &#x20A6; 3,240</div>
-                            <div class="src_pr">
-                                <div class="old_p">&#x20A6; 3,600</div>
-                                <div class="srg_h">10%</div>
-                            </div>
-                        </div>
-                    </a>
-                    <section class="bt">
-                        <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                height="24" fill="currentColor">
-                                <path
-                                    d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
-                                </path>
-                            </svg>Remove</button>
-
-                        <form action="" method="post" class="-mal">
-                            <button id="" class="_qty" value="" type="button" disabled>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
-                            <span class="incre">1</span>
-                            <button id="" class="_qty" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </form>
-                    </section>
-                </article>
             </div>
 
             <div class="col_2">
@@ -273,11 +82,11 @@
                     <h1>CART SUMMARY</h1>
                     <div class="_prty">
                         <p id="_ow_a">Subtotal</p>
-                        <p id="pp_r">&#x20A6; 17,996</p>
+                        <p id="pp_r" class="totalP">&#x20A6;</p>
                     </div>
                     <p id="_pw">Delivery fees not included yet.</p>
                     <div class="check_out">
-                        <button class="chek_out">Checkout (₦ 17,996)</button>
+                        <button class="chek_out">Checkout (<span class="totalP"></span>)</button>
                     </div>
                 </div>
 
@@ -304,7 +113,7 @@
 
                     <div class="product-list image-listsCli" id="wrp_recent">
 
-                    
+
                     </div>
 
                 </div>
@@ -362,6 +171,7 @@
     <script src="assets/javascript/getCartQty.js"></script>
     <script src="assets/javascript/loadSliderImages.js"></script>
     <script src="assets/javascript/getRecentlyViewed.js"></script>
+    <script src="assets/javascript/displayCartItems.js"></script>
 
 </body>
 
