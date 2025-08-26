@@ -542,7 +542,7 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
           if (quantity > 0) {
             quantity--;
 
-            const increment = variationItem.querySelector(".add_incre");
+            const increment = variationItem.querySelector(".incre");
 
             btn.setAttribute("disabled", true);
             increment.setAttribute("disabled", true);
@@ -582,7 +582,7 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
               if (quantity === 0) {
                 btn.disabled = true;
                 variationItem
-                  .querySelector(".remove_decre")
+                  .querySelector(".remove_v")
                   .classList.remove("active");
 
                 cartItem.quantity = quantity;
