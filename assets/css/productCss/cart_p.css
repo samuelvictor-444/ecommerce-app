@@ -31,7 +31,7 @@
        border-radius: 4px;
        position: relative;
    } 
-   
+
 
    .top-container-wrapper:hover #right {
        display: flex;
@@ -391,6 +391,7 @@
        position: relative;
        align-items: center;
        display: flex;
+       gap: 10px;
    }
 
    ._qty {
@@ -522,6 +523,7 @@
    button._qty:disabled {
        opacity: .5;
        box-shadow: none;
+       background-color: #565656;
        cursor: not-allowed;
    }
 
