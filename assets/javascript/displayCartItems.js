@@ -3,17 +3,34 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   const emptyCartContainer = document.querySelector(".empty_cart_box");
   const cartPContainer = document.querySelector(".product_added_container");
+  const checkOutMobile = document.querySelector(".mobile_check_out");
+
+  const counterDisplay = document.querySelector(".counter_");
 
   if (!emptyCartContainer) return;
 
   // check if cart is empty
   if (cart.length === 0) {
+    checkOutMobile.style.display = "none";
     emptyCartContainer.style.display = "block";
     return;
   }
 
+  document.querySelector(".body_container_wrapper").style.marginBottom =
+    "100px";
+
+  // count total quantity of items in the cart
+  let totalCount = cart.reduce(
+    (sum, item) => sum + (parseInt(item.quantity) || 0),
+    0
+  );
+
   emptyCartContainer.style.setProperty("display", "none", "important");
   cartPContainer.style.setProperty("display", "flex");
+
+  if (counterDisplay) {
+    counterDisplay.textContent = `Cart (${totalCount})`;
+  }
 
   try {
     const response = await fetch("api/getCartDetails.php", {
@@ -43,16 +60,34 @@ window.addEventListener("DOMContentLoaded", async () => {
           const discountPercent =
             oldPrice > 0 ? Math.round((discountAmount / oldPrice) * 100) : 0;
 
-          wrapper.innerHTML += `  <article class="_product_added dr" id="product_c">
-                        <a href="product_check.php" id="core">
+          const productVariation = product.variation
+            ? `${product.variation}`
+            : "";
+          const productVariationName = product.variationName
+            ? `${product.variationName}`
+            : "";
+
+          let variationHTML = "";
+          if (product.variation && product.variationName) {
+            variationHTML = `<p id="varya"> <span id="vN"> ${product.variationName}:<span id="v_V"> ${product.variation}</p>`;
+          }
+
+          wrapper.innerHTML += `
+          
+          <article class="_product_added dr" id="product_c">
+                        <a href="product.php?id=${product.id}&name=${
+            product.slug
+          }" id="core">
                             <div class="img-c">
-                                <img src="${product.image}" alt="" width="72" height="72">
+                                <img src="${
+                                  product.image
+                                }" alt="" width="72" height="72">
                             </div>
 
                             <div class="main_">
                                 <h3 class="name">${product.name}</h3>
+                                ${variationHTML}
                                 <p class="status">in stock</p>
-                                <p class="status_"><span id="label">Seller :</span> Aba Price</p>
                                 <p id="unit_left">Few uints left</p>
                                 <div class="ft"><img src="../images/crat.png" alt=""></div>
                             </div>
@@ -65,17 +100,18 @@ window.addEventListener("DOMContentLoaded", async () => {
                                     <div class="old_p">&#x20A6; ${formatPrice(
                                       product.oldPrice
                                     )}</div>
-                                    <div class="srg_h">${discountPercent > 0 ? `${discountPercent}%` : ""}</div>
+                                    <div class="srg_h">${
+                                      discountPercent > 0
+                                        ? `${discountPercent}%`
+                                        : ""
+                                    }</div>
                                 </div>
                             </div>
                         </a>
                         <section class="bt">
-                            <button class="btns_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                    height="24" fill="currentColor">
-                                    <path
-                                        d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z">
-                                    </path>
-                                </svg>Remove</button>
+                            <button class="btns_">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M600-240v-80h160v80H600Zm0-320v-80h280v80H600Zm0 160v-80h240v80H600ZM120-640H80v-80h160v-60h160v60h160v80h-40v360q0 33-23.5 56.5T440-200H200q-33 0-56.5-23.5T120-280v-360Zm80 0v360h240v-360H200Zm0 0v360-360Z"/></svg>
+                            Remove</button>
 
                             <div class="-mal">
                                 <button id="" class="_qty inactive" value="" type="button" disabled="">
