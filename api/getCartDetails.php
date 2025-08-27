@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    $result = [];
+    $results = [];
 
     // loop through the cart
     foreach ($cart as $item) {
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // get product details
 
-        $query = "SELECT name, price, old_price, image FROM products WHERE slug = :slug";
+        $query = "SELECT id, name, price, old_price, image FROM products WHERE slug = :slug";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(":slug", $slug);
         $stmt->execute();
@@ -37,11 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($product) {
             // If variation is selected
             if (!empty($attrId)) {
-                $queryVar = " SELECT av.value
-                    FROM product_attribute_values pav
-                    JOIN attribute_values av ON pav.attribute_value_id = av.id
-                    WHERE pav.attribute_value_id = :attribute_value_id AND pav.product_slug = :product_slug
-                ";
+                $queryVar = " SELECT av.value, a.name AS attribute_name
+    FROM product_attribute_values pav
+    JOIN attribute_values av ON pav.attribute_value_id = av.id
+    JOIN attributes a ON av.attribute_id = a.id
+    WHERE pav.attribute_value_id = :attribute_value_id 
+      AND pav.product_slug = :product_slug
+";
 
                 $stmtVar = $pdo->prepare($queryVar);
                 $stmtVar->bindParam(":attribute_value_id", $attrId);
@@ -54,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 if ($var) {
                     $product['variation'] = $var['value'];
+                    $product['variation_name'] = $var['attribute_name'];
                 }
 
             }
@@ -61,11 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $results[] = [
                 "key" => $key,
+                "id" => $product["id"],
                 "slug" => $slug,
                 "name" => $product['name'],
                 "image" => $product['image'],
                 "price" => (float) $product['price'],
                 "oldPrice" => (float) $product['old_price'],
+                "variationName" => $product['variation_name'] ?? null,
                 "variation" => $product['variation'] ?? null,
                 "quantity" => $qty
             ];
