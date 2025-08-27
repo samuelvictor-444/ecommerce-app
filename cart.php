@@ -18,6 +18,15 @@
         body {
             background-color: #f1f1f2;
         }
+
+        .footer_container {
+            margin-top: 0px;
+        }
+
+        .counter_ {
+            cursor: default;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
     </style>
 
 
@@ -35,7 +44,7 @@
                 <div class="_m_card">
                     <div class="cls">
                         <h2 class="_mob_h2">Subtotal</h2>
-                        <p class="_mob_p">&#x20A6; 2,172,089</p>
+                        <p class="_mob_p totalP"></p>
                     </div>
                 </div>
 
@@ -45,7 +54,7 @@
                         <i class='bx bxs-phone bx-tada'></i>
                     </button>
                     <button class="mob_il che_o" id="" type="button">
-                        Checkout (&#x20A6; 2,172,089)
+                        Checkout (<span class="totalP"></span>)
                     </button>
                 </div>
                 <!-- ends mobile check container that holds the check out btn -->
@@ -56,7 +65,11 @@
         <!-- CONTAINER THAT DISPLAY EMPTY CART BOX TO THE USER  -->
 
         <div class="empty_cart_box">
-            <img src="assets/images/cart.668e6453.svg" alt="" height="100" width="100">
+            <!-- <img src="assets/images/cart.668e6453.svg" alt="" height="100" width="100"> -->
+            <svg xmlns="http://www.w3.org/2000/svg" height="56px" viewBox="0 -960 960 960" width="56px" fill="currentColor">
+                <path
+                    d="m634-440-81-80h69l110-200H353l-80-80h525q23 0 35.5 19.5t.5 42.5L692-482q-11 20-28 31t-30 11ZM280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm540 52L566-280H304q-44 0-67-37.5t-3-78.5l42-86-72-162L28-820l56-56L876-84l-56 56ZM486-360l-80-80h-62l-40 80h182Zm136-160h-69 69Zm58 440q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80Z" />
+            </svg>
             <h2 class="-Pwy">Your cart is empty!</h2>
             <p class="-lh-15">Browse our categories and discover our best deals!</p>
             <button id="_start_shopping" class="_start_shopping_p">start shopping</button>
@@ -70,7 +83,7 @@
         <div class="product_added_container">
             <div class="clo_4">
                 <header class="-pvs">
-                    <h2>Cart (4)</h2>
+                    <h2 class="counter_">Cart (4)</h2>
                 </header>
 
                 <div class="added_cart"> </div>
@@ -172,6 +185,8 @@
     <script src="assets/javascript/loadSliderImages.js"></script>
     <script src="assets/javascript/getRecentlyViewed.js"></script>
     <script src="assets/javascript/displayCartItems.js"></script>
+    <script src="assets/javascript/fetchCategory.js"></script>
+
 
 </body>
 
