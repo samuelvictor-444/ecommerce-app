@@ -20,10 +20,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     "100px";
 
   // count total quantity of items in the cart
-  let totalCount = cart.reduce(
-    (sum, item) => sum + (parseInt(item.quantity) || 0),
-    0
-  );
+  let totalCount = cart.length;
 
   emptyCartContainer.style.setProperty("display", "none", "important");
   cartPContainer.style.setProperty("display", "flex");

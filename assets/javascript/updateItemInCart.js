@@ -53,22 +53,34 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    const setBtnState = (disabled) => {
-      document.querySelectorAll(".increment, .decrement").forEach((btn) => {
-        if (disabled) {
-          btn.classList.add("processing");
-          btn.setAttribute("disabled", true);
-        } else {
-          btn.classList.remove("processing");
-          btn.removeAttribute("disabled");
-          btn.classList.remove("inactive");
-        }
+    const setAllBtnsState = (disabled) => {
+      document.querySelectorAll("._product_added").forEach((cartItem) => {
+        const incrementBtn = cartItem.querySelector(".increment");
+        const decrementBtn = cartItem.querySelector(".decrement");
+
+        [incrementBtn, decrementBtn].forEach((btn) => {
+          if (!btn) return;
+          if (disabled) {
+            btn.classList.add("processing");
+            btn.setAttribute("disabled", true);
+          } else {
+            btn.classList.remove("processing");
+            btn.removeAttribute("disabled");
+
+            // Make sure decrement is disabled if quantity === 1
+            const qtySpan = cartItem.querySelector(".incre");
+            if (qtySpan && parseInt(qtySpan.textContent) <= 1) {
+              if (decrementBtn) decrementBtn.setAttribute("disabled", true);
+            }
+          }
+        });
       });
+
     };
 
     // increment operation
     if (incrementBtn) {
-      setBtnState(true);
+      setAllBtnsState(true);
 
       const spinner = document.createElement("small");
       spinner.classList.add("spin");
@@ -87,14 +99,14 @@ window.addEventListener("DOMContentLoaded", () => {
         // Save updated cart
         localStorage.setItem("cart", JSON.stringify(cart));
 
-        setBtnState(false);
+        setAllBtnsState(false);
         recalcTotals();
       }, 2500);
     } // ends increment operation
 
     if (decrementBtn) {
       if (item.quantity > 1) {
-        setBtnState(true);
+        setAllBtnsState(true);
 
         const spinner = document.createElement("small");
         spinner.classList.add("spin");
@@ -113,7 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
           // Save updated cart
           localStorage.setItem("cart", JSON.stringify(cart));
 
-          setBtnState(false);
+          setAllBtnsState(false);
           recalcTotals();
 
           if (item.quantity === 1) {
@@ -126,25 +138,26 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-   if (removeBtn) {
-  // remove from array
-  cart = cart.filter((c) => c.key !== item.key);
+    if (removeBtn) {
+      // remove from array
+      cart = cart.filter((c) => c.key !== item.key);
 
-  // remove this item row
-  cartItem.remove();
+      // remove this item row
+      cartItem.remove();
 
-  // save
-  localStorage.setItem("cart", JSON.stringify(cart));
+      // save
+      localStorage.setItem("cart", JSON.stringify(cart));
 
-  // recalc totals
-  recalcTotals();
+      // recalc totals
+      recalcTotals();
 
-  // check if cart is empty
-  if (cart.length === 0) {
-    document.querySelector(".product_added_container").style.display = "none";
-    document.querySelector(".empty_cart_box").style.display = "block";
-  }
-}
+      // check if cart is empty
+      if (cart.length === 0) {
+        document.querySelector(".product_added_container").style.display =
+          "none";
+        document.querySelector(".empty_cart_box").style.display = "block";
+      }
+    }
 
     // Save updated cart
     localStorage.setItem("cart", JSON.stringify(cart));
