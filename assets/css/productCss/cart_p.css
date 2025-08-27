@@ -84,7 +84,7 @@
        text-align: center;
        border-radius: 4px;
        color: #fff;
-       background: #f68b1e;
+       background: #94004F;
        cursor: pointer;
        line-height: 1rem;
        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
@@ -92,6 +92,7 @@
        font-weight: 500;
        text-transform: uppercase;
        font-size: .875rem;
+       transition: all 0.5s ease;
        font-family: var(--font-family);
    }
 
@@ -99,14 +100,31 @@
    ._qty:hover,
    .chek_out:hover,
    ._btn_sle button:hover {
-       background: #e07e1b;
+       background: #ca006c;
+   }
+
+   .empty_cart_box svg {
+    margin-top: 20px;
+    color: #ca006c;
+    margin-bottom: 10px;
    }
 
    .empty_cart_box #_start_shopping:focus,
    ._qty:focus,
    .chek_out:focus,
    ._btn_sle button:focus {
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), inset 0 0 0 2px #af6315;
+       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), inset 0 0 0 2px #94004F;
+   }
+
+   #vN {
+    color: #75757a;
+    font-size: 14px;
+    font-family:var(--font-family);
+   }
+
+   #v_V {
+    color: #313133;
+    text-transform: uppercase;
    }
 
    .--limi {
@@ -362,7 +380,7 @@
        font-size: .875rem;
        line-height: 1rem;
        text-align: center;
-       text-transform: uppercase;
+       text-transform: capitalize;
        font-weight: 500;
        font-family: var(--font-family);
        color: #f68b1e;
@@ -377,8 +395,8 @@
 
    .btns_:hover::after {
        content: "";
-       top: -8px;
-       bottom: -8px;
+       top: -3px;
+       bottom: -3px;
        right: -8px;
        left: -8px;
        position: absolute;
