@@ -186,6 +186,7 @@
     <script src="assets/javascript/getRecentlyViewed.js"></script>
     <script src="assets/javascript/displayCartItems.js"></script>
     <script src="assets/javascript/fetchCategory.js"></script>
+    <script src="assets/javascript/updateItemInCart.js"></script>
 
 
 </body>

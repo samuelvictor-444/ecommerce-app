@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $results[] = [
                 "key" => $key,
                 "id" => $product["id"],
+                "attrId" => $attrId,
                 "slug" => $slug,
                 "name" => $product['name'],
                 "image" => $product['image'],

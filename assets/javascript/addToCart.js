@@ -93,8 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".product_variation .pop button");
     const continueBtn = document.querySelector(".btns_con a");
     const goToCartBtn = document.querySelector(".btns_con button");
-    // const cartQtySpan = document.querySelector(".cart_quantity");
-    // const mCartQtySpan = document.querySelector("#mobile_cart_quantity");
+  
 
     overLay.style.display = "flex";
 
@@ -187,7 +186,7 @@ window.addEventListener("DOMContentLoaded", () => {
             attribute_value_id: parseInt(valueId),
             productName,
             productImg,
-            productPrice,
+            price :productPrice,
             productOldPrice,
           };
 

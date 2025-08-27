@@ -8,7 +8,7 @@
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Playfair Display" !important;
  }
  
- 
+
  :root {
      --container_width-box: 87%;
      --media-container_width-box: 90%;
@@ -989,7 +989,6 @@
  ._see_more {
      display: none;
  }
-
 
 
  @media screen and (max-width :1199px) {
@@ -2300,6 +2299,8 @@
          margin-right: 5px;
      }
  }
+
+
 
 
  @media screen and (min-width :510px) and (max-width :519px) {
