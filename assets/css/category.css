@@ -1395,7 +1395,7 @@ input[type="number"] {
     margin-bottom: 3px;
     box-shadow: var(--box-shadow-cate-3);
     background-color: #33b27b;
-    color: #fff;
+    color: #fff !important;
     transition: 0.5s ease-in-out;
     cursor: default;
     text-transform: capitalize;
@@ -1407,12 +1407,10 @@ input[type="number"] {
 }
 
 
-
-
-
 .success h2 {
     font-size: 13px;
     font-weight: 500;
+    color: #fff !important;
     font-family: var(--font-family-2);
 }
 

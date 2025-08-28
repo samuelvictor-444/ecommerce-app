@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const slug = cartItem.dataset.slug;
     const valueId = cartItem.dataset.value;
+    const productName = cartItem.dataset.name;
 
     const quantitySpan = cartItem.querySelector(".incre");
     let quantity = parseInt(quantitySpan.textContent);
@@ -95,6 +96,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
         quantitySpan.textContent = quantity;
 
+        sweetAlert(productName, "Quantity has been updated successfully");
+
         // Save updated cart
         localStorage.setItem("cart", JSON.stringify(cart));
 
@@ -120,6 +123,8 @@ window.addEventListener("DOMContentLoaded", () => {
           quantity = item.quantity;
 
           quantitySpan.textContent = quantity;
+
+          sweetAlert(productName, "Quantity has been updated successfully");
 
           // Save updated cart
           localStorage.setItem("cart", JSON.stringify(cart));
@@ -161,8 +166,11 @@ window.addEventListener("DOMContentLoaded", () => {
       if (cart.length === 0) {
         document.querySelector(".product_added_container").style.display =
           "none";
+        document.querySelector(".mobile_check_out").style.display = "none";
         document.querySelector(".empty_cart_box").style.display = "block";
       }
+
+      sweetAlert(productName, "has been removed from cart successfully");
     }
 
     // Save updated cart
@@ -173,4 +181,57 @@ window.addEventListener("DOMContentLoaded", () => {
     cartQtySpan.textContent = totalQty;
     mCartQtySpan.textContent = totalQty;
   });
+
+  function sweetAlert(message1, message2) {
+    const container = document.querySelector(".message");
+
+    if (!container) return; // Prevent error if .message does not exist
+
+    const existingAlert = container.querySelector(".success");
+    if (existingAlert) {
+      container.removeChild(existingAlert);
+    }
+
+    const div = document.createElement("div");
+    div.classList.add("success");
+    div.style.left = "-700px";
+
+    const h2 = document.createElement("h2");
+    const p = document.createElement("p");
+    const span = document.createElement("span");
+
+    if (message1 && message2) {
+      div.classList.add("active");
+      p.textContent = message1;
+      span.textContent = message2;
+    }
+
+    h2.appendChild(p);
+    h2.appendChild(span);
+    div.appendChild(h2);
+    container.appendChild(div);
+
+    // 🎵 Optional sound feedback
+    const audio = new Audio(
+      "./assets/audio/notification-sound-effect-372475.mp3"
+    );
+    audio.play();
+
+    // 📳 Vibration for mobile (if supported)
+    if (navigator.vibrate) {
+      navigator.vibrate([100, 50, 100]);
+    }
+
+    // Remove the alert after 3 seconds
+    setTimeout(() => {
+      div.classList.remove("active");
+
+      // Remove the DOM element completely after another 2 seconds
+      setTimeout(() => {
+        if (container.contains(div)) {
+          container.removeChild(div);
+        }
+      }, 2000);
+    }, 3000);
+  } // ends function sweetAlert
 });

@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", async () => {
           
           <article class="_product_added dr" id="product_c" data-value="${
             $valueId ? `${$valueId}` : ""
-          }"  data-slug="${product.slug}">
+          }" data-name="${product.name}"  data-slug="${product.slug}">
                         <a href="product.php?id=${product.id}&name=${
             product.slug
           }" id="core">
