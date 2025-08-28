@@ -75,7 +75,6 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
-
     };
 
     // increment operation
@@ -141,6 +140,13 @@ window.addEventListener("DOMContentLoaded", () => {
     if (removeBtn) {
       // remove from array
       cart = cart.filter((c) => c.key !== item.key);
+
+      const counterDisplay = document.querySelector(".counter_");
+      const totalCount = cart.length;
+
+      if (counterDisplay) {
+        counterDisplay.textContent = `Cart (${totalCount})`;
+      }
 
       // remove this item row
       cartItem.remove();
