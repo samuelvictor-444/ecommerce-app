@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   } // ends formatPrice
 
   try {
-    const response = await fetch("api/get_products.php?category=today deal");
+    const response = await fetch("api/get_products.php?category=today_deal");
     const products = await response.json();
 
     const productContainer = document.querySelector(".container_products");
