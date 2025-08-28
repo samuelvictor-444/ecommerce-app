@@ -13,6 +13,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   if (cart.length === 0) {
     checkOutMobile.style.display = "none";
     emptyCartContainer.style.display = "block";
+    document.querySelector(".body_container_wrapper").style.marginBottom =
+      "0px";
+
     return;
   }
 
@@ -56,9 +59,6 @@ window.addEventListener("DOMContentLoaded", async () => {
           const discountAmount = oldPrice - price;
           const discountPercent =
             oldPrice > 0 ? Math.round((discountAmount / oldPrice) * 100) : 0;
-
-           
-            
 
           let variationHTML = "";
           if (product.variation && product.variationName) {
