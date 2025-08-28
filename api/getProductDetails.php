@@ -13,7 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             # fetch product 
 
-            $getProductQuery = "SELECT P.*, EXISTS(SELECT 1 FROM product_attribute_values pav WHERE pav.product_slug = p.slug LIMIT 1)AS has_variation FROM products p WHERE p.slug = :slug";
+            $getProductQuery = "SELECT p.*, EXISTS(
+                        SELECT 1 
+                        FROM product_attribute_values pav 
+                        WHERE pav.product_slug = p.slug 
+                        LIMIT 1
+                     ) AS has_variation 
+                     FROM products p 
+                     WHERE p.slug = :slug";
+
             $stmt = $pdo->prepare($getProductQuery);
             $stmt->bindParam(":slug", $productSlug);
 
@@ -43,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             $stmtVar = $pdo->prepare($getProductVar);
 
-            $stmtVar->bindParam(":slug" , $product['slug']);
+            $stmtVar->bindParam(":slug", $product['slug']);
 
             $stmtVar->execute();
 
@@ -52,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $variations = [];
 
             foreach ($variationRaw as $row) {
-               $variations[$row['attribute_name']][] = $row['attribute_value'];
+                $variations[$row['attribute_name']][] = $row['attribute_value'];
             }
 
             $product["variation"] = $variations;

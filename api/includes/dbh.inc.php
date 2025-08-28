@@ -6,7 +6,6 @@ $dbname = "Online_Store";
 $dbuser = "root";
 $dbpassword = "";
 
-header("Content-Type: application/json");
 
 try {
     $pdo = new PDO(

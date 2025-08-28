@@ -8,7 +8,7 @@ if ($product_slug) {
                sc.name AS subcategory_name, sc.slug AS subcategory_slug,
                c.name AS category_name, c.slug AS category_slug
         FROM products p
-        JOIN subcategories sc ON p.subcategory_id = sc.id
+        JOIN subCategories sc ON p.subcategory_id = sc.id
         JOIN categories c ON sc.category_id = c.id
         WHERE p.slug = :slug";
 
@@ -18,14 +18,7 @@ if ($product_slug) {
     $stmt->execute();
 
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
 }
-
-
-
-
 ?>
 
 

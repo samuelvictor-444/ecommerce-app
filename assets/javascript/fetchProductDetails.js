@@ -349,7 +349,7 @@ function renderProduct(product) {
               addToLocalCart(item);
               setupIncrementDecrementListeners();
               sweetAlert(productName, "product add successfully to cart");
-            }, 2000);
+            }, 800);
           }
         });
 
@@ -537,7 +537,7 @@ async function showVariationOverlay(slug, addToCartBtn, productName) {
                 " Quantity has been updated successfully"
               );
             }
-          }, 2500);
+          }, 800);
         } else if (btn.classList.contains("remove_v")) {
           if (quantity > 0) {
             quantity--;
@@ -670,135 +670,82 @@ function handleGoToCartClick() {
 } // ends function handleGoToCartClick
 
 function setupIncrementDecrementListeners() {
-  const addToCartBtn = document.querySelectorAll(".add_to_cart");
+  const addToCartBtns = document.querySelectorAll(".add_to_cart");
 
-  addToCartBtn.forEach((addCart) => {
-    const increDecBox = document.querySelectorAll(".incre_decre");
-    increDecBox.forEach((box) => {
+  addToCartBtns.forEach((addCart) => {
+    const productContainer = addCart.closest(".product_page_view");
+    const increDecBox = productContainer?.querySelector(".incre_decre");
+    if (!increDecBox) return;
+
+    const incrementBtn = increDecBox.querySelector(".increment");
+    const decrementBtn = increDecBox.querySelector(".decrement");
+    const quantitySpan = increDecBox.querySelector("span");
+
+    if (!incrementBtn || !decrementBtn || !quantitySpan) return;
+
+    const productName = addCart.dataset.name;
+    const slug = addCart.dataset.slug;
+
+    const updateQuantity = (change) => {
+      incrementBtn.disabled = true;
+      decrementBtn.disabled = true;
+      incrementBtn.classList.add("updating");
+      decrementBtn.classList.add("updating");
+
       const spinner = document.createElement("span");
-      const slug = addCart.dataset.slug;
+      spinner.classList.add("spin2");
+      quantitySpan.appendChild(spinner);
 
-      const incrementBtn = box?.querySelector(".increment");
-      const decrementBtn = box?.querySelector(".decrement");
-      const quantitySpan = box?.querySelector("span");
+      let currentQty = parseInt(quantitySpan.textContent.trim()) || 0;
+      let newQty = currentQty + change;
 
-      if (!incrementBtn || !decrementBtn || !addToCartBtn || !quantitySpan)
-        return;
+      setTimeout(() => {
+        quantitySpan.removeChild(spinner);
+        incrementBtn.disabled = false;
+        decrementBtn.disabled = false;
+        incrementBtn.classList.remove("updating");
+        decrementBtn.classList.remove("updating");
+        if (newQty <= 0) {
+          quantitySpan.textContent = 0;
+          increDecBox.style.display = "none";
+          addCart.style.setProperty("display", "flex", "important");
+          addCart.removeAttribute("disabled");
+          addCart.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M12.0049 2C15.3186 2 18.0049 4.68629 18.0049 8V9H22.0049V11H20.8379L20.0813 20.083C20.0381 20.6013 19.6048 21 19.0847 21H4.92502C4.40493 21 3.97166 20.6013 3.92847 20.083L3.17088 11H2.00488V9H6.00488V8C6.00488 4.68629 8.69117 2 12.0049 2ZM18.8309 11H5.17788L5.84488 19H18.1639L18.8309 11ZM13.0049 13V17H11.0049V13H13.0049ZM9.00488 13V17H7.00488V13H9.00488ZM17.0049 13V17H15.0049V13H17.0049ZM12.0049 4C9.86269 4 8.1138 5.68397 8.00978 7.80036L8.00488 8V9H16.0049V8C16.0049 5.8578 14.3209 4.10892 12.2045 4.0049L12.0049 4Z"></path>
+                              </svg><span>add to cart</span>`;
 
-      const productName = addCart.dataset.name;
+          // Remove item from localStorage cart
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart = cart.filter((i) => i.slug !== slug); // remove the item
+          localStorage.setItem("cart", JSON.stringify(cart));
 
-      // Prevent multiple listeners
-      incrementBtn.replaceWith(incrementBtn.cloneNode(true));
-      decrementBtn.replaceWith(decrementBtn.cloneNode(true));
+          updateCartCount();
 
-      const newIncrementBtn = box.querySelector(".increment");
-      const newDecrementBtn = box.querySelector(".decrement");
-
-      newIncrementBtn.addEventListener("click", () => {
-        newIncrementBtn.setAttribute("disabled", true);
-        newDecrementBtn.setAttribute("disabled", true);
-
-        newIncrementBtn.classList.add("updating");
-        newDecrementBtn.classList.add("updating");
-
-        quantitySpan.appendChild(spinner);
-        spinner.classList.add("spin2");
-
-        let currentQty = parseInt(quantitySpan.textContent.trim()) || 1;
-        let newQty = currentQty + 1;
-
-        setTimeout(() => {
-          quantitySpan.removeChild(spinner);
-          spinner.classList.remove("spin");
-
-          newIncrementBtn.removeAttribute("disabled");
-          newDecrementBtn.removeAttribute("disabled");
-
-          newIncrementBtn.classList.remove("updating");
-          newDecrementBtn.classList.remove("updating");
-
+          sweetAlert(productName, "has been removed from your cart");
+        } else {
+          // update item normally
           quantitySpan.textContent = newQty;
-
           const item = {
             key: slug,
             slug,
             attribute_value_id: null,
             quantity: newQty,
-            name: addCart.dataset.name,
+            name: productName,
             price: parseFloat(addCart.dataset.price),
-            oldPrice: parseFloat(addCart.dataset.old),
+            oldPrice: parseFloat(addCart.dataset.old || 0),
             image: addCart.dataset.image,
           };
-
           addToLocalCart(item);
           sweetAlert(productName, "Quantity has been updated successfully");
-        }, 2500);
-      });
+        }
+      }, 800); // reduced delay for smoother UX
+    };
 
-      newDecrementBtn.addEventListener("click", () => {
-        newIncrementBtn.setAttribute("disabled", true);
-        newDecrementBtn.setAttribute("disabled", true);
-
-        newIncrementBtn.classList.add("updating");
-        newDecrementBtn.classList.add("updating");
-
-        quantitySpan.appendChild(spinner);
-        spinner.classList.add("spin2");
-
-        let currentQty = parseInt(quantitySpan.textContent.trim()) || 1;
-
-        setTimeout(() => {
-          quantitySpan.removeChild(spinner);
-          spinner.classList.remove("spin2");
-
-          newIncrementBtn.removeAttribute("disabled");
-          newDecrementBtn.removeAttribute("disabled");
-
-          newIncrementBtn.classList.remove("updating");
-          newDecrementBtn.classList.remove("updating");
-
-          if (currentQty > 0) {
-            currentQty--;
-            quantitySpan.textContent = currentQty;
-
-            const item = {
-              key: slug,
-              slug,
-              attribute_value_id: null,
-              quantity: currentQty,
-              name: addCart.dataset.name,
-              price: parseFloat(addCart.dataset.price),
-              image: addCart.dataset.image,
-            };
-
-            addToLocalCart(item);
-
-            if (currentQty === 0) {
-              box.style.display = "none";
-              addCart.style.display = "flex";
-              addCart.removeAttribute("disabled");
-              addCart.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                        <path d="M12.0049 2C15.3186 2 18.0049 4.68629 18.0049 8V9H22.0049V11H20.8379L20.0813 20.083C20.0381 20.6013 19.6048 21 19.0847 21H4.92502C4.40493 21 3.97166 20.6013 3.92847 20.083L3.17088 11H2.00488V9H6.00488V8C6.00488 4.68629 8.69117 2 12.0049 2ZM18.8309 11H5.17788L5.84488 19H18.1639L18.8309 11ZM13.0049 13V17H11.0049V13H13.0049ZM9.00488 13V17H7.00488V13H9.00488ZM17.0049 13V17H15.0049V13H17.0049ZM12.0049 4C9.86269 4 8.1138 5.68397 8.00978 7.80036L8.00488 8V9H16.0049V8C16.0049 5.8578 14.3209 4.10892 12.2045 4.0049L12.0049 4Z">
-                                        </path>
-                                    </svg><span>add to cart</span>`;
-
-              sweetAlert(productName, " has been removed from your cart");
-            } else {
-              addCart.setAttribute("disabled", true);
-
-              sweetAlert(
-                productName,
-                " Quantity has been updated successfully"
-              );
-            }
-          }
-        }, 2500); // ends setTimeout function
-      });
-    });
+    incrementBtn.addEventListener("click", () => updateQuantity(1));
+    decrementBtn.addEventListener("click", () => updateQuantity(-1));
   });
 }
 
-// function  updateInlineCounter
 function updateInlineCounter(slug) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
