@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $products[] = [
                 'productId' => $row['id'],
+                'productSlug' => $row['slug'],
                 'productName' => $row['name'],
                 'productPrice' => $row['price'],
                 'productOldPrice' => $row['old_price'],

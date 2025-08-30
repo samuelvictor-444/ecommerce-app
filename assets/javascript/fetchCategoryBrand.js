@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded" , () => {
 
                     a.appendChild(span);
                     container.appendChild(a);
-                })
+                });
 
             }else {
                 throw new Error(`HTPP ERROR STATUS ${response.status}`);

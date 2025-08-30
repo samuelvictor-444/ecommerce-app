@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         container.innerHTML += `
           <a href="product.php?id=${encodeURIComponent(
             product.productId
-          )}&name=${encodeURIComponent(product.productName)}">
+          )}&name=${encodeURIComponent(product.productSlug)}">
                     <div class="product_store_">
                         <div class="pro_img">
                             <img src="${product.productImgSrc}" alt="">
@@ -55,9 +55,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
       products.slice(0, 7).forEach((product) => {
         container.innerHTML += `
         
-          <a href="products.php?id=${encodeURIComponent(
+          <a href="product.php?id=${encodeURIComponent(
             product.productId
-          )}&${encodeURIComponent(product.productName)}">
+          )}&name=${encodeURIComponent(product.productSlug)}">
                     <div class="product_store_">
                         <div class="pro_img">
                             <img src="${product.productImgSrc}" alt="">

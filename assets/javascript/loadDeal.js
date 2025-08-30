@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       const a = document.createElement("a");
       a.href = `product.php?id=${encodeURIComponent(product.productId)}&name=${
-        product.productName
+        product.productSlug
       }`;
 
       const productImgDiv = document.createElement("div");

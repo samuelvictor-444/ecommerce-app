@@ -162,6 +162,11 @@
        flex-basis: 25%;
        position: sticky;
        padding: 0 8px;
+       left: 0;
+       bottom: 0;
+       right: 0;
+       top: 0;
+       align-self: flex-start;
    }
 
    .card_pr {

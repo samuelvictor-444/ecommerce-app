@@ -32,7 +32,7 @@
 
   <?php include_once "includes/header.php"; ?>
 
-    <?php include_once "includes/scrollTop.php" ?>
+  <?php include_once "includes/scrollTop.php" ?>
 
   <?php include_once "includes/category_body.php"; ?>
 

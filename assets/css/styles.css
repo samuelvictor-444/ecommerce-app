@@ -306,8 +306,9 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
+    margin-top: 6px;
     font-family: var(--font-family-2);
     color: var(--price-font-color);
 }

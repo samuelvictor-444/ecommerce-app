@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
           addToLocalCart(item);
           setupIncrementDecrementListeners();
           sweetAlert(productName, "product add successfully to cart");
-        }, 2000);
+        }, 500);
       }
       
       return;
@@ -256,7 +256,7 @@ window.addEventListener("DOMContentLoaded", () => {
                   " Quantity has been updated successfully"
                 );
               }
-            }, 2500);
+            }, 500);
           } else if (btn.classList.contains("remove_decre")) {
             if (quantity > 0) {
               quantity--;
@@ -323,7 +323,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     );
                   }
                 }
-              }, 2500);
+              }, 500);
             }
           }
         });
@@ -509,7 +509,7 @@ window.addEventListener("DOMContentLoaded", () => {
           addToLocalCart(item);
 
           sweetAlert(productName, "Quantity has been updated successfully");
-        }, 2500);
+        }, 500);
       });
 
       newDecrementBtn.addEventListener("click", () => {
@@ -565,7 +565,7 @@ window.addEventListener("DOMContentLoaded", () => {
               );
             }
           }
-        }, 2500); // ends setTimeout function
+        }, 500); // ends setTimeout function
       });
     });
   } // ends function setupIncrementDecrementListeners
@@ -623,8 +623,8 @@ window.addEventListener("DOMContentLoaded", () => {
         if (container.contains(div)) {
           container.removeChild(div);
         }
-      }, 2000);
-    }, 3000);
+      }, 500);
+    }, 500);
   } // ends function sweetAlert
 
   function syncCartWithUI() {

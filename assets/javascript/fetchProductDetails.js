@@ -34,6 +34,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 
 function renderProduct(product) {
+  // set page title and meta
+  document.title = `${product.name} | Online store`;
+
   const imgCont = document.querySelector("#maginify");
   imgCont.innerHTML = "";
 
@@ -349,7 +352,7 @@ function renderProduct(product) {
               addToLocalCart(item);
               setupIncrementDecrementListeners();
               sweetAlert(productName, "product add successfully to cart");
-            }, 800);
+            }, 500);
           }
         });
 
@@ -828,8 +831,8 @@ function sweetAlert(message1, message2) {
       if (container.contains(div)) {
         container.removeChild(div);
       }
-    }, 2000);
-  }, 3000);
+    }, 500);
+  }, 500);
 } // ends function sweetAlert
 
 function updateCartCount() {

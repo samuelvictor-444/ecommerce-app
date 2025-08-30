@@ -27,8 +27,6 @@
             cursor: default;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
-
-      
     </style>
 
 
@@ -151,7 +149,7 @@
                 <h2 id="he_text">Returns are easy</h2>
                 <div class="_f16_no">
                     To know more about our return and refund policy, please visit:
-                    https://www.jumia.com.ng/sp-returns-refunds
+                   <a href="" style="color: #264996;"> http://samueldev.rf.gd/sp-returns-refunds</a>
                 </div>
             </section>
         </div>

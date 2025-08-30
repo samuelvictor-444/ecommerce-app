@@ -452,13 +452,13 @@ if ($product_slug) {
 
             <div class="container_section">
                 <article>
-                    <h1 class="product_name">Yamaha PSR-SX900 61-Key High-Level Arranger Keyboard</h1>
+                    <h1 class="product_name">  </h1>
                     <div class="pr_pric">
                         <div class="_pws">
-                            <span id="spn_pr" class="product_price">&#x20A6; 6,166</span>
+                            <span id="spn_pr" class="product_price"></span>
                             <div class="cont_old">
-                                <span class="old_pr">&#x20A6; 13,400</span>
-                                <span class="bugdt">56%</span>
+                                <span class="old_pr"></span>
+                                <span class="bugdt"></span>
                             </div>
                         </div>
                     </div>

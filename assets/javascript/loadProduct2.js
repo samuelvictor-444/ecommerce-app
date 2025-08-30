@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       container.innerHTML += `
 
-             <a href="product.php?id=${encodeURIComponent(item.productId)}&name=${item.productName}">
+             <a href="product.php?id=${encodeURIComponent(item.productId)}&name=${item.productSlug}">
                     <div class="product_c">
                         <div class="img_p">
                             <img src="${item.productImgSrc}" alt="">

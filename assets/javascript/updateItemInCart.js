@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       let subTotal = cart.reduce((sum, p) => {
         let price = parsePrice(p.price) || 0; // use productPrice directly
-        let qty = parseInt(p.quantity) || 0;
+        let qty = Number(p.quantity) || 0;
         return sum + price * qty;
       }, 0);
 
@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         setAllBtnsState(false);
         recalcTotals();
-      }, 2500);
+      }, 500);
     } // ends increment operation
 
     if (decrementBtn) {
@@ -138,7 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
             decrementBtn.removeAttribute("disabled");
             decrementBtn.classList.remove("inactive");
           }
-        }, 2500);
+        }, 500);
       }
     }
 
@@ -168,6 +168,11 @@ window.addEventListener("DOMContentLoaded", () => {
           "none";
         document.querySelector(".mobile_check_out").style.display = "none";
         document.querySelector(".empty_cart_box").style.display = "block";
+
+        
+        setTimeout(() => {
+            window.location.reload(true);
+        },500);
       }
 
       sweetAlert(productName, "has been removed from cart successfully");
@@ -231,7 +236,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (container.contains(div)) {
           container.removeChild(div);
         }
-      }, 2000);
-    }, 3000);
+      }, 500);
+    }, 500);
   } // ends function sweetAlert
 });

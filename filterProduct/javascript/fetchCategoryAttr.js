@@ -137,7 +137,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             const options = variationMap[type];
 
-            console.log(options);
+            // console.log(options);
 
             options.forEach((option) => {
               const id = `${type}_${option.id}`;
@@ -216,7 +216,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
               if (selected) {
                 selectedFilter[currentVariationType] = selected.value;
-                console.log(selectedFilter);
+                // console.log(selectedFilter);
               }
 
               updateSelectedDisplay();
@@ -506,7 +506,7 @@ window.addEventListener("DOMContentLoaded", () => {
               preloader.style.display = "flex";
 
               setTimeout(() => {
-                window.location = `../catelog.php?${params.toString()}`;
+                window.location = `../catalog_listing.php?${params.toString()}`;
               }, 5000);
             }); // ends function showProduct
           } // ends  if show product btn
