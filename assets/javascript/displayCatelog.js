@@ -1,13 +1,20 @@
 window.addEventListener("DOMContentLoaded", async () => {
-  const categorySlug = new URLSearchParams(window.location.search).get(
-    "category"
-  );
-  if (!categorySlug) console.error("no category found");
+  const queryString = window.location.search;
+
+  if (!queryString) {
+    console.error("No query params found");
+    return;
+  }
+
 
   try {
-    const response = await fetch(`api/fetchCatelogListing.php?`)
+    const response = await fetch(`api/fetchCatelogListing.php${queryString}`);
+
     
   } catch (error) {
-    console.log("error occurred while fetching catelog listing products ", error);
+    console.log(
+      "error occurred while fetching catelog listing products ",
+      error
+    );
   }
 });

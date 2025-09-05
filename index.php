@@ -1,3 +1,9 @@
+<?php 
+ session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,6 +92,7 @@
         //  slideStore();
     </script>
     <script src="assets/javascript/getCartQty.js"></script>
+    <script src="assets//javascript/checkIsUserLogin.js"></script>
 
 </body>
 

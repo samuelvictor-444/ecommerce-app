@@ -368,7 +368,7 @@ window.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "";
         data.slice(0, 7).forEach((item) => {
           const a = document.createElement("a");
-          a.href = `subCate.php?subCate=${encodeURIComponent(item.slug)}`;
+          a.href = `catelog_listing.php?subCate=${encodeURIComponent(item.slug)}`;
 
           const span = document.createElement("span");
           span.innerText = item.name;

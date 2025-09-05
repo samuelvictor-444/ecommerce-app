@@ -100,21 +100,7 @@ $selectedSort = trim($_GET['sort'] ?? "popularity");
 
         <!-- container that holds list of official stores -->
 
-        <div class="container_st">
-
-            <!-- <a href="">
-                <div class="store_wrapper">
-                    <img src="" alt="">
-                </div>
-            </a>
-
-               <a href="">
-                <div class="store_wrapper">
-                    <img src="" alt="">
-                </div>
-            </a> -->
-
-        </div>
+        <div class="container_st"> </div>
         <!-- ends container that holds list of official stores -->
     </div>
 

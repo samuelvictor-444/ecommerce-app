@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +31,47 @@
         .counter_ {
             cursor: default;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .inProgress {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            bottom: 0px;
+            top: 0px;
+            left: 0px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            right: 0px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .loader {
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border-top: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+            border-left: 4px solid #f68b1e;
+            border-right: 4px solid #f68b1e;
+            animation: spinLoader 0.7s linear infinite;
+            z-index: 100;
+        }
+
+
+
+        @keyframes spinLoader {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 
@@ -149,7 +195,7 @@
                 <h2 id="he_text">Returns are easy</h2>
                 <div class="_f16_no">
                     To know more about our return and refund policy, please visit:
-                   <a href="" style="color: #264996;"> http://samueldev.rf.gd/sp-returns-refunds</a>
+                    <a href="" style="color: #264996;"> http://samueldev.rf.gd/sp-returns-refunds</a>
                 </div>
             </section>
         </div>
@@ -160,22 +206,22 @@
 
 
     <script>
-        $(document).ready(function () {
-            $('._start_shopping_p').click(function () {
+        $(document).ready(function() {
+            $('._start_shopping_p').click(function() {
                 $(location).attr('href', 'index.php')
             });
 
-            $('#_deta').click(function () {
+            $('#_deta').click(function() {
                 $('.over_lay').css('display', 'flex');
                 $('.over_lay').fadeIn();
             });
 
-            $('.over_lay').click(function () {
+            $('.over_lay').click(function() {
                 $('.over_lay').css('display', 'none');
                 $('.over_lay').fadeOut();
             });
 
-            $('#_tel_pho').click(function () {
+            $('#_tel_pho').click(function() {
                 $(location).attr('href', 'tel:09037870902');
             });
         });
@@ -188,6 +234,7 @@
     <script src="assets/javascript/displayCartItems.js"></script>
     <script src="assets/javascript/fetchCategory.js"></script>
     <script src="assets/javascript/updateItemInCart.js"></script>
+    <script src="assets/javascript/checkout.js"></script>
 
     <div class="message"> </div>
 </body>
