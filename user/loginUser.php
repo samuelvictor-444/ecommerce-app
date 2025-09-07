@@ -109,50 +109,26 @@
 
                         <div id="email_input">
                             <div class="identifiyer_d">
-                                <input type="email" placeholder="Enter Your Email " id="userEmail" class="input_user" required>
+                                <input type="number" id="" class="input_user" required>
                             </div>
                             <p></p>
                         </div>
 
-                        <div id="pwd_input">
-                            <div class="identifiyer_d">
-                                <input type="password" placeholder="Enter Your password " name="password" id="password" class="input_user" required>
-                            </div>
-                            <p></p>
-                        </div>
+
                     </div>
 
                     <div class="controls">
                         <div class="btn_contrl">
-                            <button id="Continue" type="button" class="cont_btn">Continue</button>
+                            <button id="verify_opt" type="button" class="cont_btn">verify opt</button>
                         </div>
 
-                        <div class="disclaimer">
-                            <label>By continuing you agree to Aba Price</label>
-                            <br>
-                            <a href="" class="terms_con" target="_blank">Terms and Conditions</a>
-                        </div>
+
                     </div>
 
-                    <div class="bottom_conta">
-                        <div class="social_login">
-                            <div class="login_mdc">
-                                <button id="facebook" class="_log_face">
-                                    <span>Log in with Facebook</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="_not_ice">
-                        <div>
-                            <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
-                        </div>
-                    </div>
 
-                    <div class="log_bott">
-                        <img src="../images/icon2.png" alt="" width="24px">
-                    </div>
+
+
 
                 </div>
             </form>

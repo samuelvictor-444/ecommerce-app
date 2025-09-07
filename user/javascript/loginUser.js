@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           const result = await response.json();
 
-          if (result.success && result.message.otp_required) {
+          if (result.success) {
             startProgress();
 
             setTimeout(() => {
@@ -155,7 +155,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
               document.querySelector(
                 "#otp-message"
-              ).textContent = `We have sent a verification code to ${result.message.user_email}`;
+              ).textContent = `We have sent a verification code to ${result.user_email}`;
               step = 3;
             }, 2000);
 
@@ -171,6 +171,7 @@ window.addEventListener("DOMContentLoaded", () => {
         console.error("Password verification failed:", error);
       }
     } else if (step === 3) {
+      
     }
   });
 });

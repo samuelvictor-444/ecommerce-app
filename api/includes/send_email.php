@@ -23,15 +23,15 @@ function sendEmail($toEmail, $toName, $subject, $body)
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host       = 'smtp.example.com';  // Replace with your SMTP server
+        $mail->Host       = 'smtp.gmail.com';  // 
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'your_email@example.com'; // SMTP username
-        $mail->Password   = 'your_password';        // SMTP password
+        $mail->Username   = 'abaprice.store@gmail.com'; // SMTP username
+        $mail->Password = 'gftbdfugawdjuofz';        // SMTP password
         $mail->SMTPSecure = 'tls';                  // Encryption: 'tls' or 'ssl'
         $mail->Port       = 587;                    // SMTP port
 
         // Email headers
-        $mail->setFrom('your_email@example.com', 'Your Name');
+        $mail->setFrom('abaprice.store@gmail.com', 'Aba Price.com');
         $mail->addAddress($toEmail, $toName);
 
         // Content

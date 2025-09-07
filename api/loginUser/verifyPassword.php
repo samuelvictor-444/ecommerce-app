@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $subject = "Your OTP Code";
         $body = "<p>Your OTP code is: <strong>$otp</strong></p>";
 
+
         sendEmail($user['email'], $user['firstName'], $subject, $body);
 
         sendSuccess("Login successful. OTP sent to your email.");
@@ -75,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = null;
         $stmt = null;
 
+        
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
