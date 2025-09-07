@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const createUser = new FormData(formData);
 
     try {
-      const response = await fetch("api/createUserAcc", {
+      const response = await fetch("../api/signUpUser/createUser.php", {
         method: "POST",
         body: createUser,
       });
@@ -56,9 +56,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (result.success) {
           alert(result.message);
+
+          setTimeout(() => {
+            window.location.href = "./loginUser.php";
+          },2000);
+
+          
         } else {
           alert(result.message);
         }
+
+
       } else {
         throw new Error(`HTTPS ERROR STATUS ${response.status}`);
       }

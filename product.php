@@ -1,4 +1,7 @@
 <?php
+
+require_once "./api/config_session.php";
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -20,7 +23,7 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="assets/css/productCss/styles.css">
     <script src="assets/javascript/header_script.js"></script>
     <script src="assets/javascript/jquery.js"></script>
-     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -37,6 +40,8 @@ error_reporting(E_ALL);
     <script src="assets/javascript/saveRecentlyViewedProducts.js"></script>
     <script src="assets/javascript/fetchProductDetails.js"></script>
     <script src="assets/javascript/searchProduct.js"></script>
+    <script src="assets/javascript/checkIsUserLogin.js"></script>
+
 
 
 

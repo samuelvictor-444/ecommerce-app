@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "./api/config_session.php";
 
 ?>
 
@@ -51,13 +51,13 @@ session_start();
 
         .loader {
             border-radius: 100%;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             position: absolute;
-            border-top: 4px solid #fff;
-            border-bottom: 4px solid #fff;
-            border-left: 4px solid #f68b1e;
-            border-right: 4px solid #f68b1e;
+            border-top: 7px solid #fff;
+            border-bottom: 7px solid #ED017F;
+            border-left: 7px solid #ED017F;
+            border-right: 7px solid #ED017F;
             animation: spinLoader 0.7s linear infinite;
             z-index: 100;
         }
@@ -235,6 +235,8 @@ session_start();
     <script src="assets/javascript/fetchCategory.js"></script>
     <script src="assets/javascript/updateItemInCart.js"></script>
     <script src="assets/javascript/checkout.js"></script>
+    <script src="assets/javascript/checkIsUserLogin.js"></script>
+
 
     <div class="message"> </div>
 </body>

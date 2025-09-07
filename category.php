@@ -1,3 +1,12 @@
+<?php 
+  require_once "./api/config_session.php";
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +60,8 @@
   <script src="assets/javascript/getCartQty.js"></script>
   <script src="assets/javascript/addToCart.js"></script>
   <script src="assets/javascript/getRecentlyViewed.js"></script>
+      <script src="assets/javascript/checkIsUserLogin.js"></script>
+
 
 
 </body>

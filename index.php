@@ -1,5 +1,5 @@
-<?php 
- session_start();
+<?php
+require_once "./api/config_session.php";
 
 ?>
 
@@ -37,13 +37,13 @@
     <script src="assets/javascript/fetchStores.js"></script>
     <script src="assets/javascript/subcribe.js"></script>
     <script>
-        $(window).ready(function () {
+        $(window).ready(function() {
 
-            $('.container_slider').mouseover(function () {
+            $('.container_slider').mouseover(function() {
                 $('.container_slider_btn button').fadeIn().css('display', 'flex');
             });
 
-            $('.container_slider').mouseleave(function () {
+            $('.container_slider').mouseleave(function() {
                 $('.container_slider_btn button').fadeOut();
             });
         });
@@ -83,17 +83,20 @@
                 });
 
                 currentIndex =
-                    direction === "right"
-                        ? (currentIndex + 1) % orginalSlide.length
-                        : Math.max(0, currentIndex - 1);
+                    direction === "right" ?
+                    (currentIndex + 1) % orginalSlide.length :
+                    Math.max(0, currentIndex - 1);
             }
         }
 
         //  slideStore();
     </script>
     <script src="assets/javascript/getCartQty.js"></script>
-    <script src="assets//javascript/checkIsUserLogin.js"></script>
+    <script src="assets/javascript/checkIsUserLogin.js"></script>
 
+   
 </body>
 
 </html>
+
+

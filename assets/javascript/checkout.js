@@ -18,12 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
           document.querySelector("body").appendChild(div);
 
           setTimeout(() => {
-            window.location.href = "payment.php";
+            window.location.href = "./payment.php";
           }, 2000);
-
-
         } else {
-          window.location.href = "user/loginUser.php";
+          const currentPage = encodeURIComponent(window.location.pathname);
+          window.location.href = `user/loginUser.php?redirect=${currentPage}`;
         }
       } else {
         throw new Error(`HTTPS ERROR STATUS ${response.status}`);

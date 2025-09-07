@@ -144,7 +144,7 @@
         </div>
 
         <div class="container_banner_5">
-            <a href="">
+            <a id="logIn_us" href="./user/loginUser.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>">
                 <div class="container_link">login / signup</div>
             </a>
         </div>
@@ -460,5 +460,7 @@
             $(".mobile_sideSlider").animate({ left: "0" }, 700);
         })
     }); // ends jquery
+
+
 
 </script>

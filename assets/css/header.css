@@ -12,6 +12,17 @@
     font-style: normal;
 }
 
+.container_banner_5:hover .dd_content {
+  display: block;
+  top: 63px !important;
+}
+
+.user_a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 
 .container_banner {
     width: 100%;
@@ -193,11 +204,20 @@
     color: #ED017F;
 }
 
+.logout  {
+    background-color: #fff8ed ;
+}
+
+a.dd_links:not([href]) {
+    cursor: pointer;
+}
+
 .dd_content a.dd_links {
-    padding: 14px;
+    padding: 12px 14px;
     display: block;
     color: #333;
     text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: .2s ease-in;
     font-size: 13px;
 }
@@ -209,6 +229,7 @@ a.dd_links:hover {
 
 .container_banner_5 {
     height: 63px;
+    position: relative;
     margin-right: 10px;
 }
 

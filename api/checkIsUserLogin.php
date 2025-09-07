@@ -1,11 +1,12 @@
 <?php
-session_start();
+    require_once "./config_session.php";
+
 header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
-    if(isset($_SESSION["user_id"])) {
-        echo json_encode(["success" => true]);
+    if(is_logged_in()) {
+        echo json_encode(["success" => true, "userFirstName" => $_SESSION['user_firstName']]);
     }else {
          echo json_encode(["success" => false]);
     }
