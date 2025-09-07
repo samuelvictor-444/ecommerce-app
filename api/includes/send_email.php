@@ -1,0 +1,50 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__  . "/../../vendor/autoload.php";
+
+/**
+ * Send an email using PHPMailer
+ *
+ * @param string $toEmail Recipient email
+ * @param string $toName Recipient name
+ * @param string $subject Email subject
+ * @param string $body HTML body of the email
+ * @return void
+ */
+
+
+function sendEmail($toEmail, $toName, $subject, $body)
+{
+    $mail = new PHPMailer(true);
+
+    try {
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.example.com';  // Replace with your SMTP server
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'your_email@example.com'; // SMTP username
+        $mail->Password   = 'your_password';        // SMTP password
+        $mail->SMTPSecure = 'tls';                  // Encryption: 'tls' or 'ssl'
+        $mail->Port       = 587;                    // SMTP port
+
+        // Email headers
+        $mail->setFrom('your_email@example.com', 'Your Name');
+        $mail->addAddress($toEmail, $toName);
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo json_encode([
+            'success' => false,
+            'message' => "Mailer Error: {$mail->ErrorInfo}"
+        ]);
+        exit;
+    }
+}

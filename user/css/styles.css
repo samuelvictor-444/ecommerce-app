@@ -264,7 +264,49 @@ button {
   position: relative;
 }
 
+#email_input p , #pwd_input p {
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 3px;
+  color: #b00020;
+  font-weight: 500;
 
+}
+
+.progress_x {
+  background-color: #f2f2f2;
+  height: 4px;
+  width: 100%;
+  display: none;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.progress_x.display {
+  display: block;
+}
+
+.progress_x .slide {
+  width: 30%; /* width of the moving bar */
+  height: 100%;
+  background-color: #f8982d;
+  position: absolute;
+  left: -30%; /* start off-screen */
+  animation: slideContinuous 1s linear infinite;
+}
+
+@keyframes slideContinuous {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+
+#otp_verify {
+  display: none;
+}
+
+ 
 @media screen and (max-width : 1199px) {
   body {
     background-color: var(--background-color);

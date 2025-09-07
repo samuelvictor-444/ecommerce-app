@@ -4,9 +4,35 @@ window.addEventListener("DOMContentLoaded", () => {
   const hiddenEmail = document.querySelector("#hiddenEmail");
   const userpwd = document.querySelector("#pwd_input");
   const emailContainer = $("#email_input");
+  const loginContainer = document.querySelector("#user_log_box");
+  const otp_container = document.querySelector("#otp_verify");
 
-      const currentPage = encodeURIComponent(window.location.pathname);
+  function startProgress() {
+    const progressBar = document.querySelector(".progress_x");
+    const slide = progressBar.querySelector(".slide");
 
+    progressBar.classList.add("display");
+
+    // reset animation in case user retries
+    slide.style.animation = "none";
+    slide.offsetHeight; // force reflow
+    slide.style.animation = "slideContinuous 1s linear infinite";
+  }
+
+  function stopProgress() {
+    const progressBar = document.querySelector(".progress_x");
+    if (progressBar.classList.contains("display")) {
+      progressBar.classList.remove("display");
+    }
+  }
+
+  emailInput.addEventListener("input", () => {
+    document.querySelector("#email_input").querySelector("p").innerHTML = "";
+  });
+
+  userpwd.addEventListener("input", () => {
+    document.querySelector("#pwd_input p").textContent = "";
+  });
 
   // Track current step (1 = email, 2 = password)
   let step = 1;
@@ -18,13 +44,15 @@ window.addEventListener("DOMContentLoaded", () => {
       const userEmail = hiddenEmail.value.trim();
 
       if (!userEmail) {
-        console.log("please enter your email");
+        document.querySelector("#email_input").querySelector("p").innerHTML =
+          "Oops! We need your email to continue.";
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(userEmail)) {
-        console.log("Invalid email format");
+        document.querySelector("#email_input").querySelector("p").innerHTML =
+          "Oops! That email doesn’t seem right. Double-check and try again.";
         return;
       }
 
@@ -41,8 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
           const result = await response.json();
 
           if (result.success) {
-            alert(result.message);
-
+            startProgress();
             emailInput.disabled = true;
             loginBtn.disabled = true;
 
@@ -69,10 +96,14 @@ window.addEventListener("DOMContentLoaded", () => {
               loginBtn.disabled = false;
               loginBtn.textContent = "Login";
 
+              stopProgress();
+
               step = 2;
             }, 2000);
           } else {
-            alert(result.message);
+            stopProgress();
+            document.querySelector("#email_input p").textContent =
+              result.message;
           }
         } else {
           throw new Error(`HTTPS ERROR STATUS ${response.status}`);
@@ -83,7 +114,8 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if (step === 2) {
       const password = document.querySelector("#password").value.trim();
       if (!password) {
-        alert("Please enter your password");
+        document.querySelector("#pwd_input p").textContent =
+          "Please provide your password to access your account";
         return;
       }
 
@@ -99,11 +131,38 @@ window.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           const result = await response.json();
 
-          if (result.success) {
-            alert(result.message);
-            window.location.href = result.redirect;
+          if (result.success && result.message.otp_required) {
+            startProgress();
+
+            setTimeout(() => {
+              $(loginContainer).animate(
+                {
+                  left: "-500px",
+                  opacity: 0,
+                },
+                500,
+                () => {
+                  // hide after animation
+                  $(loginContainer).hide();
+                }
+              );
+
+              $(otp_container)
+                .css({ left: "500px", display: "block", opacity: 0 })
+                .animate({ left: "0px", opacity: 1 }, 500);
+
+              stopProgress();
+
+              document.querySelector(
+                "#otp-message"
+              ).textContent = `We have sent a verification code to ${result.message.user_email}`;
+              step = 3;
+            }, 2000);
+
+            // window.location.href = result.redirect;
           } else {
-            alert(result.message);
+            stopProgress();
+            document.querySelector("#pwd_input p").textContent = result.message;
           }
         } else {
           throw new Error(`HTTP ERROR STATUS ${response.status}`);
@@ -111,6 +170,7 @@ window.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         console.error("Password verification failed:", error);
       }
+    } else if (step === 3) {
     }
   });
 });

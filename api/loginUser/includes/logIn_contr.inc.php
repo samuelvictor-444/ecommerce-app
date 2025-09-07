@@ -14,6 +14,17 @@ function is_input_empty(string $userEmail)
     }
 } // ends function that check if input are empty
 
+function is_pwd_empty(string $userPwd)
+{
+    if ( empty($userPwd)) {
+        return true;
+    } else {
+        return false;
+    }
+} // ends function that check if input are empty
+
+
+
 // function is_email_vaild
 function is_email_valid(string $userEmail)
 {
