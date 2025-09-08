@@ -32,6 +32,7 @@ if (isset($_SESSION['user_email'])) {
     require_once "./includes/logIn_contr.inc.php";
     require_once "../includes/otp_generate.php";
     require_once "../includes/send_email.php";
+    require_once "../includes/send_otpSms.php";
 
     $user = get_user($userEmail,  $pdo);
 
@@ -52,7 +53,7 @@ if (isset($_SESSION['user_email'])) {
 
         $pdo = null;
     } elseif ($type === "sms") {
-        sendError("SMS OTP not implemented yet");
+         sendError("SMS OTP not implemented yet. Will be enabled once wallet is funded.");
     }
 } else {
 
