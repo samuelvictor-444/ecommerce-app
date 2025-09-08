@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
 
-        function sendSuccess($successMgs)
+        function sendSuccess($successMgs, $userEmail)
         {
-            $message = ["success" => true, "message" => $successMgs];
+            $message = ["success" => true, "message" => $successMgs, "user_email" => $userEmail];
             echo json_encode($message);
         }
 
@@ -56,6 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         login_user($user['id'], $user['email'], $user['firstName']);
 
+        // Store email in session for OTP verification
+        $_SESSION['otp_email'] = $user['email'];
+
         // reset last activity
         $_SESSION['LAST_ACTIVITY'] = time();
         session_regenerate_id(true);
@@ -71,12 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         sendEmail($user['email'], $user['firstName'], $subject, $body);
 
-        sendSuccess("Login successful. OTP sent to your email.");
+        sendSuccess("We have sent a verification code to ", $user['email']);
 
         $pdo = null;
         $stmt = null;
-
-        
     } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);

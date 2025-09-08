@@ -27,7 +27,7 @@
                 <div class="container_iden">
                     <div class="center">
                         <h2>Welcome to Aba Price</h2>
-                        <p class="subheading">Type your e-mail to log in or create a Aba Price account.</p>
+                        <p class="subheading" id="subH">Please enter your registered email address below to securely access your account and continue to our services</p>
                     </div>
 
                     <div class="flelds">
@@ -90,31 +90,35 @@
 
         <div class="card" id="otp_verify">
 
-            <div class="progress_x">
+            <div class="progress_x ">
                 <div class="slide"></div>
             </div>
-            <form id="loginUser">
+            <form id="user_verify_otp">
                 <div class="container_iden">
                     <div class="center">
                         <h2>Verification Code</h2>
                         <p class="subheading" id="otp-message"></p>
                     </div>
 
-                    <div class="flelds">
-
-                        <input type="hidden" id="hiddenEmail" name="userEmail">
-
+                    <div class="flelds verify_otp_con">
                         <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_GET['redirect'] ?? 'index.php'); ?>">
 
-
-                        <div id="email_input">
+                        <div id="email_input" class="otp_verify_n">
                             <div class="identifiyer_d">
-                                <input type="number" id="" class="input_user" required>
+                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
                             </div>
-                            <p></p>
+                            <div class="identifiyer_d">
+                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                            </div>
+                            <div class="identifiyer_d">
+                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                            </div>
+                            <div class="identifiyer_d">
+                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                            </div>
                         </div>
 
-
+                        <p id="otp_error_msg"></p>
                     </div>
 
                     <div class="controls">

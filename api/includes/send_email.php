@@ -27,8 +27,8 @@ function sendEmail($toEmail, $toName, $subject, $body)
         $mail->SMTPAuth   = true;
         $mail->Username   = 'abaprice.store@gmail.com'; // SMTP username
         $mail->Password = 'gftbdfugawdjuofz';        // SMTP password
-        $mail->SMTPSecure = 'tls';                  // Encryption: 'tls' or 'ssl'
-        $mail->Port       = 587;                    // SMTP port
+        $mail->SMTPSecure = 'ssl';                  // Encryption: 'tls' or 'ssl'
+        $mail->Port       = 465;                    // SMTP port
 
         // Email headers
         $mail->setFrom('abaprice.store@gmail.com', 'Aba Price.com');
@@ -41,9 +41,13 @@ function sendEmail($toEmail, $toName, $subject, $body)
 
         $mail->send();
     } catch (Exception $e) {
+    error_log("Email sending failed: " . $e->getMessage());
+
+
+        // Friendly error message for the user
         echo json_encode([
             'success' => false,
-            'message' => "Mailer Error: {$mail->ErrorInfo}"
+            'message' => "We couldn't send your OTP email at the moment. Please try again later."
         ]);
         exit;
     }

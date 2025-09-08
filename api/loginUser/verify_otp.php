@@ -1,17 +1,63 @@
+<?php
+
+require_once "../config_session.php";
+
+ini_set('display_errors', 0); // don't output PHP errors to browser
+error_reporting(E_ALL);
+
+header("Content-Type: application/json");
+
+function sendSuccess($redirect = "index.php")
+{
+       $message = [
+              "success" => true,
+              "message" => "OTP verified successfully ✅",
+              "redirect" => $redirect
+       ];
+
+       echo json_encode($message);
+}
+
+function sendError($errorMgs)
+{
+       $message = ["success" => false, "message" => $errorMgs];
+       echo json_encode($message);
+       exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+       $userOtp = trim(implode("", $_POST["otp"]));
 
 
-       // ✅ Successful login: store session info
 
-        login_user($user['id'], $user['email'], $user['firstName']);
+       if (empty($userOtp)) {
+              sendError("Please enter the OTP.");
+       }
 
-        // reset last activity
-        $_SESSION['LAST_ACTIVITY'] = time();
+       if (!isset($_SESSION['otp']) || !isset($_SESSION['otp_time'])) {
+              sendError("OTP expired or not generated.");
+       }
 
+       if (time() - $_SESSION['otp_time'] > 300) {
+              unset($_SESSION['otp']);
+              unset($_SESSION['otp_time']);
+              sendError("OTP expired. Please request a new one.");
+       }
 
+       // ✅ Compare OTP values
+       if ((string)$userOtp !== (string)$_SESSION['otp']) {
+              sendError("Invalid OTP.");
+       }
 
-        // $redirect = $_POST['redirect'] ?? 'index.php';
-        // // Send success + redirect URL
-        // sendSuccess([
-        //     "message" => "Login successful ✅",
-        //     "redirect" => $_POST['redirect'] ?? 'index.php'
-        // ]);
+       // Success → mark OTP as verified
+       $_SESSION['otp_verified'] = true;
+
+       unset($_SESSION['otp']);
+       unset($_SESSION['otp_time']);
+       sendSuccess($_POST['redirect'] ?? 'index.php');
+} else {
+       http_response_code(405);
+       echo json_encode(["error" => "method not allowed"]);
+       exit;
+}
