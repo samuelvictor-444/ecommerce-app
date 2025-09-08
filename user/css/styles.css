@@ -348,6 +348,21 @@ button {
   align-items: center;
 }
 
+input[type="number"] {
+  outline: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
 @media screen and (max-width : 1199px) {
   body {
     background-color: var(--background-color);

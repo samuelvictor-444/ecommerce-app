@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="log_bott">
-                        <img src="../images/icon2.png" alt="" width="24px">
+                        <img src="../assets/images/icon2.png" alt="" width="24px">
                     </div>
 
                 </div>
@@ -105,29 +105,43 @@
 
                         <div id="email_input" class="otp_verify_n">
                             <div class="identifiyer_d">
-                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                                <input maxlength="1" type="number" min="0" max="9" name="otp[]" class="input_user opt_input" required>
                             </div>
                             <div class="identifiyer_d">
-                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                                <input maxlength="1" type="number" min="0" max="9" name="otp[]" class="input_user opt_input" required>
                             </div>
                             <div class="identifiyer_d">
-                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                                <input maxlength="1" type="number" min="0" max="9" name="otp[]" class="input_user opt_input" required>
                             </div>
                             <div class="identifiyer_d">
-                                <input maxlength="1" type="text" name="otp[]" class="input_user opt_input" required>
+                                <input maxlength="1" type="number" min="0" max="9" name="otp[]" class="input_user opt_input" required>
                             </div>
                         </div>
 
                         <p id="otp_error_msg"></p>
                     </div>
 
+
+
                     <div class="controls">
                         <div class="btn_contrl">
                             <button id="verify_opt" type="button" class="cont_btn">verify opt</button>
                         </div>
 
+                        <div class="disclaimer">
+                            <label>Request a new code in</label>
+                        </div>
+
+
 
                     </div>
+
+                    <div class="_not_ice">
+                        <div>
+                            <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
+                        </div>
+                    </div>
+
 
 
 
