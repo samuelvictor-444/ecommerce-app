@@ -137,6 +137,9 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#user_log_box").style.opacity = 1;
 
               step = 2;
+
+              document.querySelector(".social_login").style.display = "none";
+              document.querySelector(".forgotten_pwd").style.display = "flex";
             }, 800);
           } else {
             stopProgress();
@@ -217,11 +220,14 @@ window.addEventListener("DOMContentLoaded", () => {
                     clearInterval(otpTimer);
                     counterSpan.textContent = "0";
                     // show resend UI
-                    document.querySelector(".container_resend").style.  visibility =
+                    document.querySelector(
+                      ".container_resend"
+                    ).style.visibility = "visible";
+                    document.querySelector("#colx").style.visibility =
                       "visible";
-                    document.querySelector("#colx").style.  visibility = "visible";
 
-                    document.querySelector(".count_down").style.display = "none";
+                    document.querySelector(".count_down").style.display =
+                      "none";
                   }
                 }, 1000);
               }

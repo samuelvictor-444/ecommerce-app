@@ -188,13 +188,40 @@ input.input_user {
 }
 
 .login_mdc {
-  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom_conta {
+  align-items: center;
+  justify-content: center;
+}
+
+.forgotten_pwd {
+  display: none;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.forgotten_pwd button {
+  width: 100%;
+  background-color: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #f8982d;
+  padding: 10px 0px;
+}
+
+.forgotten_pwd button:hover {
+  background-color: #fff0e2;
 }
 
 .login_mdc ._log_face {
-  background-color: #1877f2;
   width: 100%;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2), 0px 2px 2px 0px rgba(0, 0, 0, .14), 0px 1px 5px 0px rgba(0, 0, 0, .12);
   margin-top: 6px;
   margin-bottom: 6px;
   height: 51px;
@@ -202,11 +229,34 @@ input.input_user {
   text-transform: uppercase;
   cursor: pointer;
   padding: 0 16px;
-  color: #fff;
   font-size: 16px;
   font-weight: 500;
+  transition: 0.5s ease;
   font-family: "Roboto", sans-serif;
 }
+
+#facebook {
+  background-color: #1877f2;
+  color: #fff;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2), 0px 2px 2px 0px rgba(0, 0, 0, .14), 0px 1px 5px 0px rgba(0, 0, 0, .12);
+
+}
+
+#facebook:hover {
+  box-shadow:  0px 2px 4px -1px rgba(0,0,0,.2),0px 4px 5px 0px rgba(0,0,0,.14),0px 1px 10px 0px rgba(0,0,0,.12);
+ 
+}
+
+#Google {
+  background-color: transparent;
+  color: #313133;
+  border: 1px solid #000;
+}
+
+#Google:hover {
+  background-color: transparent;
+   background-color: #F5F5F5;
+} 
 
 ._log_face span {
   margin: 0 auto;
@@ -223,7 +273,7 @@ button {
 }
 
 ._not_ice {
-  margin-top: 16px;
+  margin-top: 0px;
 }
 
 ._notice {

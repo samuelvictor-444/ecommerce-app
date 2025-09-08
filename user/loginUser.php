@@ -78,24 +78,47 @@
                     <div class="bottom_conta">
                         <div class="social_login">
                             <div class="login_mdc">
-                                <button id="facebook" class="_log_face">
+                                <button id="facebook" type="button" class="_log_face">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                        <path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47062 14 5.5 16 5.5H17.5V2.1401C17.1743 2.09685 15.943 2 14.6429 2C11.9284 2 10 3.65686 10 6.69971V9.5H7V13.5H10V22H14V13.5Z"></path>
+                                    </svg>
                                     <span>Log in with Facebook</span>
                                 </button>
                             </div>
+
+                            <div class="login_mdc">
+                                <button id="Google" type="button" class="_log_face">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                        <g clippath="url(#clip0_1_74)">
+                                            <path d="M24.214 12.7245C24.214 11.7413 24.1342 11.0237 23.9616 10.2796H12.7336V14.7176H19.3242C19.1913 15.8205 18.4738 17.4815 16.8793 18.5976L16.8569 18.7461L20.407 21.4963L20.653 21.5209C22.9118 19.4347 24.214 16.3653 24.214 12.7245Z" fill="#4285F4"></path>
+                                            <path d="M12.7336 24.4176C15.9624 24.4176 18.673 23.3545 20.653 21.5209L16.8793 18.5976C15.8694 19.3018 14.5141 19.7934 12.7336 19.7934C9.57118 19.7934 6.88712 17.7074 5.93032 14.824L5.79008 14.8359L2.09866 17.6927L2.05038 17.8269C4.01692 21.7334 8.05634 24.4176 12.7336 24.4176Z" fill="#34A853"></path>
+                                            <path d="M5.93033 14.824C5.67787 14.0799 5.53176 13.2826 5.53176 12.4588C5.53176 11.6349 5.67787 10.8377 5.91704 10.0936L5.91036 9.93511L2.17268 7.03239L2.05039 7.09056C1.23988 8.71166 0.774815 10.5321 0.774815 12.4588C0.774815 14.3855 1.23988 16.2058 2.05039 17.8269L5.93033 14.824Z" fill="#FBBC05"></path>
+                                            <path d="M12.7336 5.12403C14.9791 5.12403 16.4939 6.09402 17.3576 6.90461L20.7326 3.60928C18.6599 1.6826 15.9624 0.5 12.7336 0.5C8.05634 0.5 4.01692 3.18406 2.05038 7.09056L5.91704 10.0936C6.88712 7.2102 9.57118 5.12403 12.7336 5.12403Z" fill="#EB4335"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1_74">
+                                                <rect width="23.46" height="24" fill="white" transform="translate(0.770004 0.5)"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <span>Login with Google</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="forgotten_pwd">
+                            <button type="button" id="forgot_pwd"">Forgot your password? </button>
                         </div>
                     </div>
 
-                    <div class="_not_ice">
-                        <div>
-                            <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
+                    <div class=" _not_ice">
+                                <div>
+                                    <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
+                                </div>
                         </div>
-                    </div>
 
-                    <div class="log_bott">
-                        <img src="../assets/images/icon2.png" alt="" width="24px">
-                    </div>
 
-                </div>
+                    </div>
             </form>
         </div>
 
