@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const loginUser = new FormData(form);
 
       startProgress();
-      
+
       document.querySelector("#password").disabled = true;
       loginBtn.disabled = true;
       loginBtn.classList.add("disabled");
@@ -188,7 +188,7 @@ window.addEventListener("DOMContentLoaded", () => {
             // window.location.href = result.redirect;
           } else {
             stopProgress();
-              document.querySelector("#password").disabled = true;
+            document.querySelector("#password").disabled = false;
             loginBtn.disabled = false;
             loginBtn.classList.remove("disabled");
 
@@ -243,7 +243,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     startProgress();
 
-    verifyOptBtn.classList.remove("disabled");
+    verifyOptBtn.classList.add("disabled");
     verifyOptBtn.disabled = true;
     document.querySelector("#otp_verify").style.opacity = 0.4;
 
@@ -265,6 +265,9 @@ window.addEventListener("DOMContentLoaded", () => {
           }, 1500);
         } else {
           stopProgress();
+          verifyOptBtn.classList.remove("disabled");
+          verifyOptBtn.disabled = false;
+          document.querySelector("#otp_verify").style.opacity = 1;
           document.querySelector("#otp_error_msg").textContent = result.message;
           otpInputs.forEach((input) => (input.value = ""));
           otpInputs[0].focus();
