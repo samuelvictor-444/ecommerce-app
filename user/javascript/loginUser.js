@@ -32,8 +32,21 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (!loginBtn.classList.contains("disabled")) {
+    loginBtn.classList.add("disabled");
+  }
+
   emailInput.addEventListener("input", () => {
     document.querySelector("#email_input").querySelector("p").innerHTML = "";
+    if (loginBtn.classList.contains("disabled")) {
+      loginBtn.classList.remove("disabled");
+    }
+
+    if (emailInput.value === "") {
+      if (!loginBtn.classList.contains("disabled")) {
+        loginBtn.classList.add("disabled");
+      }
+    }
   });
 
   userpwd.addEventListener("input", () => {
@@ -171,6 +184,10 @@ window.addEventListener("DOMContentLoaded", () => {
               $(otp_container)
                 .css({ left: "500px", display: "block", opacity: 0 })
                 .animate({ left: "0px", opacity: 1 }, 500);
+
+              $(".count_down").html(
+                `<p>Didn't receive the verification code? It could take a bit of time, request a new code in <span>seconds</span>. </p>`
+              );
 
               document.querySelector("#otp-message").textContent = `${
                 result.message + " " + result.user_email
