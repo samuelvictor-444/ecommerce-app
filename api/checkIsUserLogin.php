@@ -6,8 +6,8 @@ header("Content-Type: application/json");
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
 
-
     if (is_logged_in()) {
+
         if ($_SESSION["otp_verified"] === true) {
             echo json_encode(["success" => true, "userFirstName" => $_SESSION['user_firstName']]);
         } else {

@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const emailContainer = $("#email_input");
   const loginContainer = document.querySelector("#user_log_box");
   const otp_container = document.querySelector("#otp_verify");
-
+  const passwordInput = document.querySelector("#password");
   function startProgress() {
     const progressBar = document.querySelectorAll(".progress_x");
 
@@ -17,8 +17,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // reset animation in case user retries
       slide.style.animation = "none";
-      slide.offsetHeight; // force reflow
-      slide.style.animation = "slideContinuous 1s linear infinite";
+      void slide.offsetWidth; // reflow
+      slide.style.animation = "";
     });
   }
 
@@ -49,7 +49,21 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  userpwd.addEventListener("input", () => {
+  let togglePwd = document.querySelector(".visible_togg");
+  if (!togglePwd) return;
+  togglePwd.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      document.querySelector(".show_pwd").style.display = "flex";
+      document.querySelector(".not_v").style.display = "none";
+    } else {
+      passwordInput.type = "password";
+      document.querySelector(".not_v").style.display = "flex";
+      document.querySelector(".show_pwd").style.display = "none";
+    }
+  });
+
+  passwordInput.addEventListener("input", () => {
     document.querySelector("#pwd_input p").textContent = "";
   });
 
@@ -141,7 +155,7 @@ window.addEventListener("DOMContentLoaded", () => {
         console.error("Login request failed:", error);
       }
     } else if (step === 2) {
-      const password = document.querySelector("#password").value.trim();
+      let password = document.querySelector("#password").value.trim();
       if (!password) {
         document.querySelector("#pwd_input p").textContent =
           "Please provide your password to access your account";
@@ -186,8 +200,33 @@ window.addEventListener("DOMContentLoaded", () => {
                 .animate({ left: "0px", opacity: 1 }, 500);
 
               $(".count_down").html(
-                `<p>Didn't receive the verification code? It could take a bit of time, request a new code in <span>seconds</span>. </p>`
+                `<p>Didn't receive the verification code? It could take a bit of time, request a new code in <span id="counter"></span>. </p>`
               );
+
+              let otpTimer;
+              function countDown() {
+                clearInterval(otpTimer);
+                let count = 60;
+                const counterSpan = document.querySelector("#counter");
+
+                otpTimer = setInterval(() => {
+                  counterSpan.textContent = `${count} seconds`;
+                  count--;
+
+                  if (count < 0) {
+                    clearInterval(otpTimer);
+                    counterSpan.textContent = "0";
+                    // show resend UI
+                    document.querySelector(".container_resend").style.  visibility =
+                      "visible";
+                    document.querySelector("#colx").style.  visibility = "visible";
+
+                    document.querySelector(".count_down").style.display = "none";
+                  }
+                }, 1000);
+              }
+
+              countDown();
 
               document.querySelector("#otp-message").textContent = `${
                 result.message + " " + result.user_email
@@ -227,6 +266,7 @@ window.addEventListener("DOMContentLoaded", () => {
   otpInputs.forEach((input, index) => {
     input.addEventListener("input", () => {
       document.querySelector("#otp_error_msg").textContent = "";
+      input.value = input.value.replace(/[^0-9]/g, "").slice(0, 1);
 
       if (input.value.length === 1 && index < otpInputs.length - 1) {
         otpInputs[index + 1].focus();
@@ -240,6 +280,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  otpInputs[0].addEventListener("paste", (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text");
+    if (/^\d{4}$/.test(paste)) {
+      otpInputs.forEach((input, i) => {
+        input.value = paste[i] || "";
+      });
+      otpInputs[otpInputs.length - 1].focus();
+    }
+  });
+
   verifyOptBtn.addEventListener("click", async () => {
     if (step !== 3) return; // only run at step 3
 
@@ -248,6 +299,12 @@ window.addEventListener("DOMContentLoaded", () => {
     otpInputs.forEach((input) => {
       otp += input.value;
     });
+
+    if (otp.length < otpInputs.length) {
+      const firstEmpty = Array.from(otpInputs).find((input) => !input.value);
+      if (firstEmpty) firstEmpty.focus();
+      return;
+    }
 
     if (otp.length < 4) {
       document.querySelector("#otp_error_msg").textContent =

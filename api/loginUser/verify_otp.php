@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
        // ✅ Compare OTP values
        if ((string)$userOtp !== (string)$_SESSION['otp']) {
-              sendError("Invalid OTP.");
+              sendError(" This verification code is not valid. Please request a new OTP.");
        }
 
        // Success → mark OTP as verified

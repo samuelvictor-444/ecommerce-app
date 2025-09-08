@@ -331,7 +331,9 @@ button {
 
 .otp_verify_n .identifiyer_d {
   width: 75px;
+  position: relative;
   display: flex;
+
 }
 
 #otp_error_msg {
@@ -348,15 +350,15 @@ button {
   align-items: center;
 }
 
-input[type="number"] {
+.otp_verify_n input[type="text"] {
   outline: none;
   appearance: textfield;
   -moz-appearance: textfield;
 }
 
 /* Chrome, Safari, Edge, Opera */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+.otp_verify_n input[type="text"]::-webkit-outer-spin-button,
+.otp_verify_n input[type="text"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -389,8 +391,15 @@ input[type=number]::-webkit-inner-spin-button {
 .container_resend {
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  justify-content: center;
+  margin-top: 17px;
   margin-bottom: 5px;
+  visibility: hidden;
+  gap: 40px;
+}
+
+#colx {
+  visibility: hidden;
 }
 
 .col_bx_us {
@@ -398,11 +407,45 @@ input[type=number]::-webkit-inner-spin-button {
   color: #f8982d;
   font-weight: 400;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.col_bx_us p {
+  margin: 5px auto;
+  font-size: 12px;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .col_bx_us button {
-  width: 35px;
-  height: 35px;
+  width: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 48px;
+  background-color: #fff0e2;
+}
+
+.visible_togg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 23px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.show_pwd {
+  display: none;
+}
+
+.not_v {
+  display: flex;
 }
 
 @media screen and (max-width : 1199px) {
