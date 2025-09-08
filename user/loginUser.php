@@ -180,7 +180,7 @@
                         <div class="container_resend">
 
                             <div class="col_bx_us">
-                                <button id="sms" type="button" class="resend">
+                                <button id="resend_sms_email" type="button" class="resend">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f8982d">
                                         <path d="M320-520q17 0 28.5-11.5T360-560q0-17-11.5-28.5T320-600q-17 0-28.5 11.5T280-560q0 17 11.5 28.5T320-520Zm160 0q17 0 28.5-11.5T520-560q0-17-11.5-28.5T480-600q-17 0-28.5 11.5T440-560q0 17 11.5 28.5T480-520Zm160 0q17 0 28.5-11.5T680-560q0-17-11.5-28.5T640-600q-17 0-28.5 11.5T600-560q0 17 11.5 28.5T640-520ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
                                     </svg>
@@ -189,7 +189,7 @@
                             </div>
 
                             <div class="col_bx_us">
-                                <button id="email" type="button" class="secondary">
+                                <button id="resend_otp_email" type="button" class="secondary">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f8982d">
                                         <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
                                     </svg>
@@ -215,6 +215,7 @@
 
     <!------------------------------- HERE ENDS THE SIGN IN CONTAINER WRAPPER  -------------------------->
     <script src="./javascript/loginUser.js"></script>
+    <script src="./javascript/resend_userOtp.js"></script>
 </body>
 
 </html>
