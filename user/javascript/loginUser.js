@@ -137,7 +137,7 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#user_log_box").style.opacity = 1;
 
               step = 2;
-            }, 1500);
+            }, 800);
           } else {
             stopProgress();
             emailInput.disabled = false;
@@ -239,7 +239,7 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#user_log_box").style.opacity = 1;
 
               step = 3;
-            }, 1500);
+            }, 800);
 
             // window.location.href = result.redirect;
           } else {
