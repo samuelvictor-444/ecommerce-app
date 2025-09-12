@@ -36,6 +36,8 @@ window.addEventListener("DOMContentLoaded", () => {
     resendEmailBtn.disabled = true;
     resendSmsBtn.disabled = true;
 
+    document.querySelector("#otp_verify").style.opacity = 0.4;
+
     try {
       const response = await fetch("../api/loginUser/resend_userOpt.php", {
         method: "POST",
@@ -48,13 +50,15 @@ window.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (!result.success) {
+        document.querySelector("#otp_verify").style.opacity = 1;
         otpErrorMsg.textContent = result.message || "Failed to resend OTP";
         resendEmailBtn.disabled = false;
         resendSmsBtn.disabled = false;
         return;
       }
 
-      otpMessage.textContent = `${result.message} ${result.user_email}`;
+      otpMessage.textContent = `${result.message}`;
+      document.querySelector("#otp_verify").style.opacity = 1;
 
       // Hide resend buttons & show countdown
       containerResend.style.visibility = "hidden";
@@ -84,8 +88,8 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }, 1000);
     } catch (error) {
+      document.querySelector("#otp_verify").style.opacity = 1;
       console.error("Error resending OTP:", error);
-      otpErrorMsg.textContent = "Something went wrong. Try again.";
       resendEmailBtn.disabled = false;
       resendSmsBtn.disabled = false;
     } finally {

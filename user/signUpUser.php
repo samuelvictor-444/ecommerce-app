@@ -1,6 +1,6 @@
 <?php
 
-require_once "../api/config.php";
+//require_once "../api/config_session.php";
 
 ?>
 

@@ -234,9 +234,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
               countDown();
 
-              document.querySelector("#otp-message").textContent = `${
-                result.message + " " + result.user_email
-              } `;
+              document.querySelector(
+                "#otp-message"
+              ).textContent = `${result.message} `;
 
               stopProgress();
 
@@ -337,12 +337,31 @@ window.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (result.success) {
-          setTimeout(() => {
-            stopProgress();
-            document.querySelector("#otp_verify").style.opacity = 1;
+          stopProgress();
+          document.querySelector("#otp_verify").style.opacity = 1;
 
+          const body = document.querySelector("body");
+          body.innerHTML = "";
+
+          const div = document.createElement("div");
+          div.classList.add("successfull");
+
+          const p = document.createElement("p");
+
+          const img = document.createElement("img");
+          img.classList.add("logo");
+          img.src = "../assets/images/acc_logo.png";
+
+          p.innerHTML = "Login SuccessFull";
+
+          div.appendChild(img);
+          div.appendChild(p);
+          body.appendChild(div);
+
+          setTimeout(() => {
             window.location.href = result.redirect;
-          }, 1500);
+          }, 4000);
+          
         } else {
           stopProgress();
           verifyOptBtn.classList.remove("disabled");

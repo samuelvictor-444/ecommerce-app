@@ -35,8 +35,8 @@ function get_phone(string $userPhone, object $pdo)
 // function that create user account
 function set_user(object $pdo, string $firstName, string $lastName, string $userEmail, string $userPhone, string $userDateOfBirth, string $userGender, string $userPwd)
 {
-    $query = "INSERT INTO users (firstName , lastName , email , phoneNumber , gender , dateOfBirth , userPassword)
-     Values(:firstName , :lastName , :email , :phoneNumber , :gender , :dateOfBirth , :userPassword)";
+    $query = "INSERT INTO users (firstName , lastName , email , phoneNumber , gender , dateOfBirth , userPassword , lastLogin)
+     Values(:firstName , :lastName , :email , :phoneNumber , :gender , :dateOfBirth , :userPassword , NOW())";
 
     $hashPwd = password_hash($userPwd, PASSWORD_DEFAULT);
 

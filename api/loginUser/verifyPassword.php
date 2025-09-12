@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         function sendError($errorMgs)
         {
+            if (ob_get_length()) ob_clean();
+
             $message = ["success" => false, "message" => $errorMgs];
             echo json_encode($message);
             exit;
@@ -21,9 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         function sendSuccess($successMgs, $userEmail)
         {
+            if (ob_get_length()) ob_clean();
+
             $message = ["success" => true, "message" => $successMgs, "user_email" => $userEmail];
             echo json_encode($message);
+            exit;
         }
+
 
         require_once "../includes/dbh.inc.php";
         require_once "./includes/logIn_modal.inc.php";
@@ -63,18 +69,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['LAST_ACTIVITY'] = time();
         session_regenerate_id(true);
 
-
+        require_once "./mask_email.php";
         require_once "../includes/otp_generate.php";
         require_once "../includes/send_email.php";
+
 
         // Send OTP or welcome email after login
         $subject = "Your OTP Code";
         $body = "<p>Your OTP code is: <strong>$otp</strong></p>";
 
+        $maskedEmail = maskUserEmail($user['email']);
 
-        sendEmail($user['email'], $user['firstName'], $subject, $body);
+        if (sendEmail($user['email'], $user['firstName'], $subject, $body)) {
+            sendSuccess("We have sent a verification code to {$maskedEmail}", $user['email']);
+        } else {
+            sendError("We couldn't send your OTP email at the moment. Please try again later.");
+        }
 
-        sendSuccess("We have sent a verification code to ", $user['email']);
+
 
         $pdo = null;
         $stmt = null;

@@ -56,11 +56,11 @@ function is_logged_in(): bool
     return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 }
 
-function login_user(int $user_id, string $email , string $firstName)
+function login_user(int $user_id, string $email, string $firstName)
 {
     $_SESSION['user_id'] = $user_id;
     $_SESSION['user_email'] = $email;
-    $_SESSION['user_firstName'] =$firstName; 
+    $_SESSION['user_firstName'] = $firstName;
     $_SESSION['logged_in'] = true;
 
     // regenerate ID after login
@@ -74,9 +74,18 @@ if (!isset($_SESSION['user_agent'])) {
     logout_user(); // force logout if user agent changes
 }
 
+
 function logout_user()
 {
     $_SESSION = [];
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+    }
     session_destroy();
-    setcookie(session_name(), '', time() - 3600, '/');
+
+    // Return JSON instead of exiting silently
+    header('Content-Type: application/json');
+    echo json_encode(["success" => true, "message" => "Logged out successfully"]);
+    exit;
 }

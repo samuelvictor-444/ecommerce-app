@@ -190,6 +190,7 @@ input.input_user {
 .login_mdc {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
   justify-content: center;
 }
 
@@ -243,8 +244,8 @@ input.input_user {
 }
 
 #facebook:hover {
-  box-shadow:  0px 2px 4px -1px rgba(0,0,0,.2),0px 4px 5px 0px rgba(0,0,0,.14),0px 1px 10px 0px rgba(0,0,0,.12);
- 
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, .2), 0px 4px 5px 0px rgba(0, 0, 0, .14), 0px 1px 10px 0px rgba(0, 0, 0, .12);
+
 }
 
 #Google {
@@ -255,8 +256,8 @@ input.input_user {
 
 #Google:hover {
   background-color: transparent;
-   background-color: #F5F5F5;
-} 
+  background-color: #F5F5F5;
+}
 
 ._log_face span {
   margin: 0 auto;
@@ -496,6 +497,28 @@ button {
 
 .not_v {
   display: flex;
+}
+
+.successfull {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background-color: transparent;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.successfull p {
+  color: #313133;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  cursor: default;
+  margin-top: 37px;
+  font-weight: 500;
 }
 
 @media screen and (max-width : 1199px) {
