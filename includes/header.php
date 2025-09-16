@@ -32,7 +32,7 @@
             </div>
 
             <div class="mobile_con">
-                <a href="user/login.php">
+                <a href="./user/loginUser.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>">
                     <div class="mob_menu">
                         <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px"
                             fill="#333">
@@ -235,7 +235,7 @@
         </div>
 
         <div class="mobile_con">
-            <a href="user/login.php">
+            <a href="./user/loginUser.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>">
                 <div class="mob_menu">
                     <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px"
                         fill="#333">
@@ -264,8 +264,8 @@
     </div>
 
     <div class="mob_login">
-        <a href="login.php">login</a>
-        <a href="signup.php">signup</a>
+        <a href="./user/loginUser.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>">login</a>
+        <a href="./user/signUpUser.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']) ?>">signup</a>
     </div>
 
     <div class="container_mob_w">
@@ -423,44 +423,60 @@
 
 
 <script>
-    $(window).ready(function () {
-        $(window).scroll(function () {
+    $(window).ready(function() {
+        $(window).scroll(function() {
             const navbar = $(".container_banner");
             const stickyTop = navbar.offset().top;
 
             const stickNavBar = $(".sticky");
 
             if ($(window).scrollTop() > stickyTop) {
-                stickNavBar.css({ position: "fixed", top: "0px", "z-index": "99" });
-                $(".searched_product").css({ top: "55px" });
+                stickNavBar.css({
+                    position: "fixed",
+                    top: "0px",
+                    "z-index": "99"
+                });
+                $(".searched_product").css({
+                    top: "55px"
+                });
             } else {
-                stickNavBar.css({ position: "relative", "z-index": "0" });
-                $("#search_product1").css({ "z-index": "100" });
-                $(".searched_product").css({ top: "160px" });
+                stickNavBar.css({
+                    position: "relative",
+                    "z-index": "0"
+                });
+                $("#search_product1").css({
+                    "z-index": "100"
+                });
+                $(".searched_product").css({
+                    top: "160px"
+                });
             }
         }); // ends window on scroll function
 
         // function that open the mobile left side nav
-        $("#sideBar").click(function () {
-            $(".mobile_sideSlider").animate({ left: "0" }, 700);
+        $("#sideBar").click(function() {
+            $(".mobile_sideSlider").animate({
+                left: "0"
+            }, 700);
         }); // ends function that open the mobile left side nav
 
         // function that closes the mobile left side nav
-        $("#CloseSideBar").click(function () {
-            $(".mobile_sideSlider").animate({ left: "-100%" }, 700);
+        $("#CloseSideBar").click(function() {
+            $(".mobile_sideSlider").animate({
+                left: "-100%"
+            }, 700);
         }); // ends function that closes the mobile left side nav
 
         // function that slide or opens an inner div
-        $(".mob_opt").click(function () {
+        $(".mob_opt").click(function() {
             $(".mob_dd").slideToggle();
             $(".mob_dd").css("display", "flex");
         }); // ends function that slide or opens an inner div
 
-        $("#menu_id").click(function () {
-            $(".mobile_sideSlider").animate({ left: "0" }, 700);
+        $("#menu_id").click(function() {
+            $(".mobile_sideSlider").animate({
+                left: "0"
+            }, 700);
         })
     }); // ends jquery
-
-
-
 </script>

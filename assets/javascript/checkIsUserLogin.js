@@ -52,6 +52,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
                 if (result.success) {
                   location.reload(); // refresh page to show logged-out state
+                  alert(result.message);
                 }
               } else {
                 throw new Error(`HTTPS ERROR STATUS ${response.status}`);

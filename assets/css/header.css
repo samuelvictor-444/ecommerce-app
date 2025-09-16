@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
+#loggedIn {
+    cursor: pointer;
+}
+
 .container_banner_5:hover .dd_content {
   display: block;
   top: 63px !important;

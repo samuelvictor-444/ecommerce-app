@@ -311,12 +311,37 @@ button {
   position: relative;
 }
 
+#pwd_input_reset {
+  position: relative;
+}
+
 #email_input {
   position: relative;
 }
 
+.div_edit {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+}
+
+.disabled_E {
+  border: none !important;
+  outline: none !important;
+  background-color: #EEEEEE;
+
+}
+
+.div_edit a {
+  color: #f8982d;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
 #email_input p,
-#pwd_input p {
+#pwd_input p, #pwd_input_reset p {
   font-size: 13px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 3px;
@@ -324,6 +349,8 @@ button {
   font-weight: 500;
 
 }
+
+
 
 .progress_x {
   background-color: #f2f2f2;

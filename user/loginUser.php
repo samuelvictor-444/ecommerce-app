@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="forgotten_pwd">
-                            <button type="button" id="forgot_pwd"">Forgot your password? </button>
+                            <button type="button" id="forgot_pwd">Forgot your password? </button>
                         </div>
                     </div>
 
@@ -220,6 +220,21 @@
     <script src="./javascript/resend_userOtp.js"></script>
     <script src="./javascript/loginGoogle.js"></script>
     <script src="./javascript/loginFacebook.js"></script>
+    <script>
+        document.querySelector("#forgot_pwd").addEventListener("click" , () => {
+            const userEmail =document.querySelector("#hiddenEmail").value.trim();
+
+            if(!userEmail) {
+                console.error("user email not found");
+                return;
+            } 
+
+
+            const redirect = new URLSearchParams(window.location.search).get("redirect");
+
+             window.location.href = `./password_reset.php?redirect=${redirect || "index.php"}&userEmail=${userEmail}`;
+        });
+    </script>
 </body>
 
 </html>

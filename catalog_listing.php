@@ -1,5 +1,6 @@
 <?php
 
+require_once "./api/config_session.php";
 require_once "api/includes/dbh.inc.php";
 
 $category_slug = trim($_GET["category"]);
@@ -603,7 +604,7 @@ $selectedSort = trim($_GET['sort'] ?? "popularity");
     <script src="assets/javascript/getRecentlyViewed.js"></script>
 
     <script>
-         const selectedSort = "<?php echo $selectedSort ?>";
+        const selectedSort = "<?php echo $selectedSort ?>";
     </script>
 </body>
 

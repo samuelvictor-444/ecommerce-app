@@ -187,20 +187,15 @@ window.addEventListener("DOMContentLoaded", () => {
           if (result.success) {
             setTimeout(() => {
               $(loginContainer).animate(
-                {
-                  left: "-500px",
-                  opacity: 0,
-                },
+                { left: "-100%", opacity: 0 },
                 500,
-                () => {
-                  // hide after animation
-                  $(loginContainer).hide();
+                function () {
+                  $(this).hide();
+                  $(otp_container)
+                    .css({ display: "block", opacity: 0, left: "100%" })
+                    .animate({ left: "0%", opacity: 1 }, 500);
                 }
               );
-
-              $(otp_container)
-                .css({ left: "500px", display: "block", opacity: 0 })
-                .animate({ left: "0px", opacity: 1 }, 500);
 
               $(".count_down").html(
                 `<p>Didn't receive the verification code? It could take a bit of time, request a new code in <span id="counter"></span>. </p>`
@@ -361,7 +356,6 @@ window.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             window.location.href = result.redirect;
           }, 4000);
-          
         } else {
           stopProgress();
           verifyOptBtn.classList.remove("disabled");

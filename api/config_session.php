@@ -7,8 +7,8 @@ ini_set('session.use_strict_mode', 1);
 $cookieParams = [
     'lifetime' => 1800,       // 30 minutes
     'path'     => '/',         // accessible site-wide
-    'domain'   => 'localhost', // change to your domain in production
-    'secure'   => false,       // true on HTTPS, false for localhost testing
+    'domain'   => 'localhost',          // <-- empty = works for localhost, 127.0.0.1, or custom host
+    'secure'   => true,       // true on HTTPS, false for localhost testing
     'httponly' => true,        // JavaScript cannot access
     'samesite' => 'Strict'     // prevent CSRF
 ];
@@ -24,13 +24,10 @@ session_start();
 $regeneration_interval = 60 * 30; // 30 minutes
 
 if (!isset($_SESSION['last_regeneration'])) {
+    $_SESSION['last_regeneration'] = time();
+} elseif (time() - $_SESSION['last_regeneration'] >= $regeneration_interval) {
     session_regenerate_id(true);
     $_SESSION['last_regeneration'] = time();
-} else {
-    if (time() - $_SESSION['last_regeneration'] >= $regeneration_interval) {
-        session_regenerate_id(true);
-        $_SESSION['last_regeneration'] = time();
-    }
 }
 
 // ==============================
@@ -39,12 +36,8 @@ if (!isset($_SESSION['last_regeneration'])) {
 $timeout = 60 * 30; // 30 minutes
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {
-    // Destroy session after timeout
-    session_unset();
-    session_destroy();
-    setcookie(session_name(), '', time() - 3600, '/'); // remove cookie
+    logout_user(); // just destroy, no JSON
 }
-
 $_SESSION['LAST_ACTIVITY'] = time();
 
 // ==============================
@@ -58,34 +51,48 @@ function is_logged_in(): bool
 
 function login_user(int $user_id, string $email, string $firstName)
 {
-    $_SESSION['user_id'] = $user_id;
-    $_SESSION['user_email'] = $email;
-    $_SESSION['user_firstName'] = $firstName;
-    $_SESSION['logged_in'] = true;
+    $_SESSION['user_id']       = $user_id;
+    $_SESSION['user_email']    = $email;
+    $_SESSION['user_firstName']= $firstName;
+    $_SESSION['logged_in']     = true;
 
     // regenerate ID after login
     session_regenerate_id(true);
     $_SESSION['last_regeneration'] = time();
 }
 
+// ==============================
+// User agent lock (less strict)
+// ==============================
 if (!isset($_SESSION['user_agent'])) {
-    $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-} elseif ($_SESSION['user_agent'] !== $_SERVER['HTTP_USER_AGENT']) {
-    logout_user(); // force logout if user agent changes
+    $_SESSION['user_agent'] = substr($_SERVER['HTTP_USER_AGENT'], 0, 50);
+} elseif (substr($_SESSION['user_agent'], 0, 50) !== substr($_SERVER['HTTP_USER_AGENT'], 0, 50)) {
+    logout_user();
 }
 
-
-function logout_user()
+// ==============================
+// Logout function
+// ==============================
+function logout_user(bool $sendResponse = false)
 {
     $_SESSION = [];
+
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+        );
     }
+
+    session_unset();
     session_destroy();
 
-    // Return JSON instead of exiting silently
-    header('Content-Type: application/json');
-    echo json_encode(["success" => true, "message" => "Logged out successfully"]);
-    exit;
+    if ($sendResponse) {
+        header('Content-Type: application/json');
+        echo json_encode(["success" => true, "message" => "Logged out successfully"]);
+        exit;
+    }
 }

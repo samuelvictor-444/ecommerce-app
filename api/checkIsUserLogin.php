@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         } else {
             // User logged in but OTP not verified
             echo json_encode([
-                "success" => false,
+                "success" => false, "message" => "User logged in but OTP not verified"
             ]);
         }
     } else {
-        echo json_encode(["success" => false]);
+        echo json_encode(["success" => false, "message" => "User not loggedin"]);
     }
 } else {
     http_response_code(405);
-    echo json_encode(["error" => "method not allowed"]);
+    echo json_encode( ["success" => false, "message" => "method not allowed"]);
     exit;
 }

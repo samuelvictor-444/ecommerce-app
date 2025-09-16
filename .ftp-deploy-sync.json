@@ -1,0 +1,12 @@
+{
+  "dangerousCleanSlate": false,
+  "exclude": [
+    "**/.git*",
+    "**/.github*",
+    "**/.gitignore",
+    "**/.ftp-deploy-sync.json",
+    "**/README.md",
+    "**/.env"
+  ]
+}
+

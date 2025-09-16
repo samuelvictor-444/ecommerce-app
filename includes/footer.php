@@ -213,6 +213,7 @@
 <!-- mobile bottom nav bar -->
 <div class="footer_menu_bar"></div>
 <!-- ends mobile bottom nav bar -->
+ 
 <script>
     window.addEventListener("DOMContentLoaded", () => {
         const subcribe = document.querySelector("#subscribe");

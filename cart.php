@@ -1,8 +1,3 @@
-<?php
-require_once "./api/config_session.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +94,7 @@ require_once "./api/config_session.php";
                     <button class="mob_il cll" id="_tel_pho" type="button">
                         <i class='bx bxs-phone bx-tada'></i>
                     </button>
-                    <button class="mob_il che_o" id="" type="button">
+                    <button class="mob_il che_o chek_out" id="" type="button">
                         Checkout (<span class="totalP"></span>)
                     </button>
                 </div>
@@ -233,6 +228,7 @@ require_once "./api/config_session.php";
     <script src="assets/javascript/getRecentlyViewed.js"></script>
     <script src="assets/javascript/displayCartItems.js"></script>
     <script src="assets/javascript/fetchCategory.js"></script>
+      <script src="assets/javascript/fetchStores.js"></script>
     <script src="assets/javascript/updateItemInCart.js"></script>
     <script src="assets/javascript/checkout.js"></script>
     <script src="assets/javascript/checkIsUserLogin.js"></script>

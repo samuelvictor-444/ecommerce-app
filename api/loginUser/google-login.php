@@ -83,8 +83,8 @@ try {
         $userId = $user['id'];
     } else {
         $stmt = $pdo->prepare(
-            "INSERT INTO users (firstName, lastName, email, createdAt, lastLogin, isActive)
-             VALUES (:firstName, :lastName, :email, NOW(), NOW(), 1)"
+            "INSERT INTO users (firstName, lastName, email,lastLogin, isActive)
+             VALUES (:firstName, :lastName, :email, NOW(), 1)"
         );
         $stmt->bindParam(":firstName", $firstName);
         $stmt->bindParam(":lastName", $lastName);
@@ -92,7 +92,7 @@ try {
         $stmt->execute();
         $userId = (int)$pdo->lastInsertId();
 
-            $user = get_user($userEmail, $pdo);
+        $user = get_user($userEmail, $pdo);
     }
     $user = get_user($userEmail, $pdo);
     // Set session

@@ -27,10 +27,6 @@
   animation: pulse 1.2s ease-in-out infinite;
 }
 
-#loggedIn {
-  cursor: pointer;
-}
-
 
 @keyframes pulse {
 
