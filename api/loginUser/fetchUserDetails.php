@@ -40,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
             sendSuccess($user);
 
+            $stmt = null;
+            $pdo = null;
+
         }
 
     } else {
