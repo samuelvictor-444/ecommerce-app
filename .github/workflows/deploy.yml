@@ -1,0 +1,32 @@
+name: Deploy Website to InfinityFree
+
+on:
+  push:
+    branches:
+      - main   # or 'master' if that's your branch
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: FTP Deploy
+      - name: FTP Deploy to InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftpupload.net
+          username: if0_39797522        # 🔹 your InfinityFree FTP username
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/          # 🔹 InfinityFree web root
+          local-dir: ./                 # upload everything from repo root
+          exclude: |
+            **/.git*
+            **/.github*
+            **/.gitignore
+            **/.ftp-deploy-sync.json
+            **/README.md
+            **/.env                     # 👈 keep .env out of GitHub deploy
+            **/.vendor/**
