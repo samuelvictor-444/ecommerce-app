@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="flelds verify_otp_con">
-                        <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_GET['redirect'] ?? 'index.php'); ?>">
+                        <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_GET['redirect'] ?? '../index.php'); ?>">
 
                         <div id="email_input" class="otp_verify_n">
                             <div class="identifiyer_d">

@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 header("Content-Type: application/json");
 
-function sendSuccess($redirect = "../../index.php")
+function sendSuccess($redirect = "../index.php")
 {
        $message = [
               "success" => true,
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
        unset($_SESSION['otp']);
        unset($_SESSION['otp_time']);
-       sendSuccess($_POST['redirect'] ?? 'index.php');
+       sendSuccess($_POST['redirect'] ?? '../index.php');
 } else {
        http_response_code(405);
        echo json_encode(["error" => "method not allowed"]);
