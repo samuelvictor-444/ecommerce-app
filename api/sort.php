@@ -39,7 +39,7 @@ try {
     $checkViewsStmt = $pdo->prepare("
         SELECT COUNT(*) FROM products
         JOIN subCategories ON products.subcategory_id = subCategories.id
-        JOIN categories ON subCategories.category_id = categories.id
+        JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1 AND products.views > 0
     ");
     $checkViewsStmt->bindParam(":category", $category);
@@ -52,7 +52,7 @@ try {
     $countStmt = $pdo->prepare("
         SELECT COUNT(*) FROM products
         JOIN subCategories ON products.subcategory_id = subCategories.id
-        JOIN categories ON subCategories.category_id = categories.id
+        JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1 $viewFilter
     ");
     $countStmt->bindParam(':category', $category, PDO::PARAM_STR);
@@ -71,7 +71,7 @@ try {
                ) AS has_variation
         FROM products
         JOIN subCategories ON products.subcategory_id = subCategories.id
-        JOIN categories ON subCategories.category_id = categories.id
+        JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1
     ";
     if (!$useFallBack) $productQuery .= " AND products.views > 0";

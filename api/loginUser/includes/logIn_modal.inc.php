@@ -30,3 +30,8 @@ function get_user(string $userEmail, object $pdo)
 
     return $user;
 }
+
+function update_user_info(string $userFirstName, string $userLastName, string $userMiddleName, string $userGender, string $userDOB) {
+    
+
+}
