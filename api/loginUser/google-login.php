@@ -42,7 +42,7 @@ function sendSuccess($bool): void
 // Only POST allowed
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
-    sendError("Method not allowed");
+    echo json_encode(["success" => false, "message" => "method not allowed"]);
 }
 
 // Read input

@@ -14,11 +14,11 @@ function sendError($errorMgs)
     exit;
 }
 
-function sendSuccess($successMgs, $user)
+function sendSuccess($successMgs)
 {
     if (ob_get_length()) ob_clean();
 
-    $message = ["success" => true, "message" => $successMgs, "user" => $user];
+    $message = ["success" => true, "message" => $successMgs];
     echo json_encode($message);
     exit;
 }
@@ -26,11 +26,16 @@ function sendSuccess($successMgs, $user)
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-      if (is_logged_in()) {
+    if (is_logged_in()) {
 
         if ($_SESSION["otp_verified"] === true) {
 
             $userEmail = $_SESSION["user_email"];
+            $userfirstName = htmlspecialchars(trim($_POST['userFirstName']));
+            $userLastName = htmlspecialchars(trim($_POST['userLastName']));
+            $middleName = htmlspecialchars(trim($_POST['userMiddleName']));
+            $userGender = htmlspecialchars(trim($_POST['user_gender']));
+            $userDOB = trim($_POST['userDOB']);
 
             require_once "../includes/dbh.inc.php";
             require_once "./includes/logIn_modal.inc.php";
@@ -38,7 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $user = get_user($userEmail, $pdo);
 
             if ($user) {
-                
+                $updated_user = update_user_info($userfirstName, $userLastName, $middleName, $userGender, $userDOB, $userEmail, $pdo);
+
+                if ($updated_user) {
+                    sendSuccess("User updated successfully");
+                } else {
+                    sendError("No changes were made ");
+                }
             } else {
                 sendError("no user found please login ");
             }
@@ -50,11 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         sendError("User not loggedin, Please login");
     }
-
-
 } else {
     http_response_code(405);
-    echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
-    sendError( $e->getMessage());
+    echo json_encode(["success" => false, "message" => "method not allowed"]);
     exit;
 }

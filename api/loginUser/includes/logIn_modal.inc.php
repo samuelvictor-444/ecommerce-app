@@ -19,10 +19,10 @@ function get_email(string $userEmail, object $pdo)
 
 function get_user(string $userEmail, object $pdo)
 {
-     $query = "SELECT id, firstName, email, middleName, userPassword , lastName , phoneNumber , gender , dateOfBirth FROM users WHERE email = :email";
+    $query = "SELECT id, firstName, email, middleName, userPassword , lastName , phoneNumber , gender , dateOfBirth FROM users WHERE email = :email";
 
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(":email" ,$userEmail);
+    $stmt->bindParam(":email", $userEmail);
 
     $stmt->execute();
 
@@ -31,7 +31,23 @@ function get_user(string $userEmail, object $pdo)
     return $user;
 }
 
-function update_user_info(string $userFirstName, string $userLastName, string $userMiddleName, string $userGender, string $userDOB) {
-    
+function update_user_info(string $userFirstName, string $userLastName, string $middleName, string $userGender, string $userDOB, string $userEmail, object $pdo)
+{
+    $update_user_query = "UPDATE users SET firstName = :firstName, lastName = :lastName, middleName = :middleName, gender = :gender, dateOfBirth = :dateOfBirth WHERE email = :email";
 
+    $stmt = $pdo->prepare($update_user_query);
+    $stmt->bindParam(":firstName", $userFirstName);
+    $stmt->bindParam(":lastName", $userLastName);
+    $stmt->bindParam(":middleName", $middleName);
+    $stmt->bindParam(":gender", $userGender);
+    $stmt->bindParam(":dateOfBirth", $userDOB);
+    $stmt->bindParam(":email", $userEmail);
+
+
+
+    if ($stmt->execute()) {
+        return $stmt->rowCount() > 0;
+    }
+
+    return false;
 }

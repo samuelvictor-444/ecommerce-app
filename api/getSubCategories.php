@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             # NOW FETCH ALL SUB CATEGORY UNDER THAT CATEGORY
 
-            $stmt = $pdo->prepare("SELECT name , slug , sub_cate_logo FROM subCategories WHERE category_id = :category_id ORDER BY name ASC");
+            $stmt = $pdo->prepare("SELECT name , slug , sub_cate_logo FROM subcategories WHERE category_id = :category_id ORDER BY name ASC");
             $stmt->bindParam(":category_id", $categoryId);
 
             $stmt->execute();
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             # NOW FETCH LIMITED SUB CATEGORY UNDER THAT CATEGORY
 
-            $stmt = $pdo->prepare("SELECT DISTINCT name, slug FROM subCategories WHERE category_id = :category_id ORDER BY RAND() DESC LIMIT 7");
+            $stmt = $pdo->prepare("SELECT DISTINCT name, slug FROM subcategories WHERE category_id = :category_id ORDER BY RAND() DESC LIMIT 7");
             $stmt->bindParam(":category_id", $categoryId);
 
             $stmt->execute();

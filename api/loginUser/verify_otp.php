@@ -58,6 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        sendSuccess($_POST['redirect'] ?? '../index.php');
 } else {
        http_response_code(405);
-       echo json_encode(["error" => "method not allowed"]);
+      echo json_encode(["success" => false, "message" => "method not allowed"]);
        exit;
 }
