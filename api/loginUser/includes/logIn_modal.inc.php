@@ -19,7 +19,7 @@ function get_email(string $userEmail, object $pdo)
 
 function get_user(string $userEmail, object $pdo)
 {
-     $query = "SELECT id, firstName, email, userPassword , lastName , phoneNumber , gender , dateOfBirth FROM users WHERE email = :email";
+     $query = "SELECT id, firstName, email, middleName, userPassword , lastName , phoneNumber , gender , dateOfBirth FROM users WHERE email = :email";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":email" ,$userEmail);

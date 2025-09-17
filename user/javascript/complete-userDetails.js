@@ -5,6 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const userFullName = document.querySelector("#user_name");
     userFullName.innerHTML = "";
 
+    const userDOB = document.querySelector("#userDOB");
+
+    const userGender = document.querySelector("#user_gender");
+
+    const userMiddleName = document.querySelector("#middle_name");
+
     try {
       const response = await fetch("../api/loginUser/fetchUserDetails.php", {
         method: "POST",
@@ -14,7 +20,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (result.success) {
-          console.log(result.user);
           userFirstName.value = result.user.firstName;
 
           userLastName.value = result.user.lastName;
@@ -23,13 +28,14 @@ window.addEventListener("DOMContentLoaded", () => {
             result.user.firstName + " " + result.user.lastName
           }`;
 
+          userDOB.value = result.user.dateOfBirth;
+          userGender.value = result.user.gender;
+          userMiddleName.value = result.user.middleName;
         } else {
-
           alert(result.message);
           setTimeout(() => {
             window.location.href = "./loginUser.php";
           }, 2000);
-
         }
       } else {
         throw new Error(`HTTPS ERROR STATUS ${response.status}`);
@@ -40,4 +46,74 @@ window.addEventListener("DOMContentLoaded", () => {
   } // ends function fetchUserDetails
 
   fetchUserDetails();
+
+  function updateUserDetails() {
+    const redirect =
+      new URLSearchParams(window.location.search).get("redirect") ||
+      "../index.php";
+    if (!redirect) return;
+
+    const updateBtn = document.querySelector("#saveUserDetails");
+    updateBtn.addEventListener("click", async () => {
+      const userFirstName = document.querySelector("#first_name");
+      const userMiddleName = document.querySelector("#middle_name");
+
+      const userLastName = document.querySelector("#last_name");
+      const userGender = document.querySelector("#user_gender");
+      const userDOB = document.querySelector("#userDOB");
+
+      if (!userFirstName.value.trim()) {
+        userFirstName.classList.add("error");
+        return;
+      }
+
+      if (!userLastName.value.trim()) {
+        userLastName.classList.add("error");
+        return;
+      }
+
+      if (!userMiddleName.value.trim()) {
+        userMiddleName.classList.add("error");
+        return;
+      }
+
+      if (!userGender.value.trim()) {
+        userGender.classList.add("error");
+        return;
+      }
+
+      if (!userDOB.value.trim()) {
+        userDOB.classList.add("error");
+        return;
+      }
+
+      const form = document.querySelector("#user_profile_form");
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("../api/loginUser/updateUserDetails.php", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          if (result.success) {
+            alert(result.message);
+          } else {
+            alert(result.message);
+          }
+        } else {
+          throw new Error(`HTTPS ERROR STATUS ${response.status}`);
+        }
+      } catch (error) {
+        console.error(
+          "error occured while updating users basic details",
+          error
+        );
+      }
+    }); // ends addEventListener updateBtn
+  } // ends function updateUserDetails
+
+  updateUserDetails();
 });

@@ -34,7 +34,7 @@ require_once "../api/config_session.php";
 
             <form id="user_profile_form">
                 <div class="user_form_input">
-                    <input type="text" placeholder="First Name" id="first_name" name="userFirstName" class="user_input" />
+                    <input type="text" placeholder="First Name" id="first_name" name="userFirstName" class="user_input"  autocomplete="true"/>
                 </div>
 
                 <div class="user_form_input">
