@@ -24,7 +24,7 @@ require_once "../api/config_session.php";
             <h2 id="user_name">Hello samuel Okhoigbe</h2>
 
             <div class="container_profile">
-
+                    
             </div>
 
         </div>

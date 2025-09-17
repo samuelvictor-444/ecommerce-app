@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 header("Content-Type: application/json");
 
-function sendSuccess($redirect = "index.php")
+function sendSuccess($redirect = "../../index.php")
 {
        $message = [
               "success" => true,

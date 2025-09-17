@@ -37,14 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             require_once "./includes/logIn_modal.inc.php";
 
             $user = get_user($userEmail, $pdo);
-    
-            sendSuccess($user);
+
+            if ($user) {
+                sendSuccess("user exists", $user);
+            } else {
+                sendError("no user found please login ");
+            }
+
 
             $stmt = null;
             $pdo = null;
-
         }
-
     } else {
         sendError("User not loggedin, Please login");
     }
