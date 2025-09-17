@@ -38,7 +38,7 @@ try {
     // Check how many products have views > 0
     $checkViewsStmt = $pdo->prepare("
         SELECT COUNT(*) FROM products
-        JOIN subCategories ON products.subcategory_id = subCategories.id
+        JOIN subcategories ON products.subcategory_id = subCategories.id
         JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1 AND products.views > 0
     ");
@@ -51,7 +51,7 @@ try {
     // Count all visible products
     $countStmt = $pdo->prepare("
         SELECT COUNT(*) FROM products
-        JOIN subCategories ON products.subcategory_id = subCategories.id
+        JOIN subcategories ON products.subcategory_id = subCategories.id
         JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1 $viewFilter
     ");
@@ -70,7 +70,7 @@ try {
                    LIMIT 1
                ) AS has_variation
         FROM products
-        JOIN subCategories ON products.subcategory_id = subCategories.id
+        JOIN subcategories ON products.subcategory_id = subCategories.id
         JOIN categories ON subcategories.category_id = categories.id
         WHERE categories.slug = :category AND products.visibility = 1
     ";
