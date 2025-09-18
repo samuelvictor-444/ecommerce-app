@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             # NOW FETCH LIMITED SUB CATEGORY UNDER THAT CATEGORY
 
-            $stmt = $pdo->prepare("SELECT slug , subCate_banner , mSubCate_banner FROM subCategories WHERE category_id = :category_id ORDER BY RAND() DESC LIMIT 12");
+            $stmt = $pdo->prepare("SELECT slug , subCate_banner , mSubCate_banner FROM subcategories WHERE category_id = :category_id ORDER BY RAND() DESC LIMIT 12");
             $stmt->bindParam(":category_id", $categoryId);
 
             $stmt->execute();
