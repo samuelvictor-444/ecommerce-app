@@ -54,7 +54,7 @@
 
         <button type="button" id="signInBtn">create account</button>
 
-        <a href="loginUser.php">login here</a>
+        <a href="./loginUser.php?redirect=<?php echo htmlspecialchars($_GET['redirect'] ?? 'index.php');  ?>">login here</a>
     </form>
 
     <script src="javascript/createUser.js"></script>

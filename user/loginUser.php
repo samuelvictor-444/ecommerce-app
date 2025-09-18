@@ -80,6 +80,11 @@
 
                     <div class="bottom_conta">
                         <div class="social_login">
+
+                         <div class="login_mdc">
+                                <a href="./signUpUser.php?redirect=<?php echo htmlspecialchars($_GET['redirect'] ?? 'index.php');  ?>">Create an Account</a>
+                            </div>
+
                             <div class="login_mdc">
                                 <button id="facebook" type="button" class="_log_face">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -106,18 +111,22 @@
                                     data-logo_alignment="left">
                                 </div>
                             </div>
+
+                           
+
                         </div>
 
                         <div class="forgotten_pwd">
                             <button type="button" id="forgot_pwd">Forgot your password? </button>
                         </div>
+
                     </div>
 
-                    <div class=" _not_ice">
+                    <!-- <div class=" _not_ice">
                                 <div>
                                     <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
                                 </div>
-                        </div>
+                        </div> -->
 
 
                     </div>
