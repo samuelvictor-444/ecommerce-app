@@ -9,6 +9,10 @@
     <script src="../assets/javascript/jquery.js"></script>
      <script src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        console.log("Your site origin is:", window.location.origin);
+
+    </script>
 </head>
 
 <body>
