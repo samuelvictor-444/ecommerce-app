@@ -14,6 +14,7 @@ require_once "../api/config_session.php";
 </head>
 
 <body>
+
     <div class="container_wrapper">
         <div class="left_container">
 
@@ -24,7 +25,7 @@ require_once "../api/config_session.php";
             <h2 id="user_name">Hello samuel Okhoigbe</h2>
 
             <div class="container_profile">
-                    
+
             </div>
 
         </div>
@@ -34,16 +35,22 @@ require_once "../api/config_session.php";
 
             <form id="user_profile_form">
                 <div class="user_form_input">
-                    <input type="text" placeholder="First Name" id="first_name" name="userFirstName" class="user_input"  autocomplete="true"/>
+                    <input type="text" placeholder="First Name" id="first_name" name="userFirstName" class="user_input" autocomplete="true" />
                 </div>
 
                 <div class="user_form_input">
-                    <input type="text" placeholder="Middle Name" id="middle_name" name="userMiddleName" class="user_input" />
+                    <input type="text" placeholder="Middle Name" id="middle_name" name="userMiddleName" class="user_input" required />
                 </div>
 
                 <div class="user_form_input">
-                    <input type="text" placeholder="Last Name" id="last_name" name="userLastName" class="user_input" />
+                    <input type="text" placeholder="Last Name" id="last_name" name="userLastName" class="user_input" required />
                 </div>
+
+
+                <div class="user_form_input">
+                    <input type="tel" placeholder="Phone" id="user_phone" name="userPhone" class="user_input" required />
+                </div>
+
 
                 <div class="user_form_input">
                     <select name="user_gender" id="user_gender">
@@ -52,8 +59,8 @@ require_once "../api/config_session.php";
                     </select>
                 </div>
 
-                 <div class="user_form_input">
-                    <input type="date"   id="userDOB" name="userDOB" class="user_input"  />
+                <div class="user_form_input">
+                    <input type="date" id="userDOB" name="userDOB" class="user_input" required />
                 </div>
 
 
@@ -62,7 +69,11 @@ require_once "../api/config_session.php";
         </div>
 
 
+        <div id="successBox" class="messageBox"></div>
     </div>
+
+
+
 
     <script src="./javascript/complete-userDetails.js"></script>
 </body>

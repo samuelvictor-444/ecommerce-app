@@ -31,9 +31,9 @@ function get_user(string $userEmail, object $pdo)
     return $user;
 }
 
-function update_user_info(string $userFirstName, string $userLastName, string $middleName, string $userGender, string $userDOB, string $userEmail, object $pdo)
+function update_user_info(string $userFirstName, string $userLastName, string $middleName, string $userGender, string $userDOB, string  $userPhone, string $userEmail, object $pdo)
 {
-    $update_user_query = "UPDATE users SET firstName = :firstName, lastName = :lastName, middleName = :middleName, gender = :gender, dateOfBirth = :dateOfBirth WHERE email = :email";
+    $update_user_query = "UPDATE users SET firstName = :firstName, lastName = :lastName, middleName = :middleName, gender = :gender, dateOfBirth = :dateOfBirth, phoneNumber = :phoneNumber WHERE email = :email";
 
     $stmt = $pdo->prepare($update_user_query);
     $stmt->bindParam(":firstName", $userFirstName);
@@ -42,6 +42,7 @@ function update_user_info(string $userFirstName, string $userLastName, string $m
     $stmt->bindParam(":gender", $userGender);
     $stmt->bindParam(":dateOfBirth", $userDOB);
     $stmt->bindParam(":email", $userEmail);
+    $stmt->bindParam(":phoneNumber",  $userPhone);
 
 
 

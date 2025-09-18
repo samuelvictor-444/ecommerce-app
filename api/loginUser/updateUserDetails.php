@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $middleName = htmlspecialchars(trim($_POST['userMiddleName']));
             $userGender = htmlspecialchars(trim($_POST['user_gender']));
             $userDOB = trim($_POST['userDOB']);
+            $userPhone = trim($_POST['userPhone']);
 
             require_once "../includes/dbh.inc.php";
             require_once "./includes/logIn_modal.inc.php";
@@ -43,15 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $user = get_user($userEmail, $pdo);
 
             if ($user) {
-                $updated_user = update_user_info($userfirstName, $userLastName, $middleName, $userGender, $userDOB, $userEmail, $pdo);
+                $updated_user = update_user_info($userfirstName, $userLastName, $middleName, $userGender, $userDOB, $userPhone, $userEmail, $pdo);
 
                 if ($updated_user) {
-                    sendSuccess("User updated successfully");
+                    sendSuccess("Great! Your information was updated");
                 } else {
-                    sendError("No changes were made ");
+                    sendError("Your profile is already up to date. No changes were necessary.");
                 }
             } else {
-                sendError("no user found please login ");
+                sendError("No user account found. Please log in to continue.");
             }
 
 

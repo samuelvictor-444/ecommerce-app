@@ -2,7 +2,7 @@ function handleCredentialResponse(response) {
   const idToken = response.credential; // Google ID Token (JWT)
 
   const redirect =
-    new URLSearchParams(window.location.search).get("redirect") || "/";
+    new URLSearchParams(window.location.search).get("redirect") || "";
 
   fetch("../api/loginUser/google-login.php", {
     method: "POST",

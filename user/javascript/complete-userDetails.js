@@ -3,6 +3,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const userFirstName = document.querySelector("#first_name");
     const userLastName = document.querySelector("#last_name");
     const userFullName = document.querySelector("#user_name");
+    const userPhone = document.querySelector("#user_phone");
+
     userFullName.innerHTML = "";
 
     const userDOB = document.querySelector("#userDOB");
@@ -31,6 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
           userDOB.value = result.user.dateOfBirth;
           userGender.value = result.user.gender;
           userMiddleName.value = result.user.middleName;
+
+          userPhone.value = result.user.phoneNumber;
         } else {
           alert(result.message);
           setTimeout(() => {
@@ -61,6 +65,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const userLastName = document.querySelector("#last_name");
       const userGender = document.querySelector("#user_gender");
       const userDOB = document.querySelector("#userDOB");
+      const userPhone = document.querySelector("#user_phone");
 
       if (!userFirstName.value.trim()) {
         userFirstName.classList.add("error");
@@ -87,6 +92,11 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      if (!userPhone.value.trim()) {
+        userPhone.classList.add("error");
+        return;
+      }
+
       const form = document.querySelector("#user_profile_form");
       const formData = new FormData(form);
 
@@ -98,10 +108,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (response.ok) {
           const result = await response.json();
+
+          const successBox = document.querySelector("#successBox");
+          successBox.innerHTML = "";
+
           if (result.success) {
-            alert(result.message);
+            successBox.innerHTML = result.message;
+            successBox.classList.add("success", "show");
+
+            setTimeout(() => {
+              successBox.classList.remove("success", "show");
+              successBox.innerHTML = "";
+              window.location.href = redirect;
+            }, 3000); // 3 seconds
+
+
           } else {
-            alert(result.message);
+            successBox.innerHTML = result.message;
+            successBox.classList.add("error", "show");
+
+            setTimeout(() => {
+              successBox.classList.remove("error", "show");
+              successBox.innerHTML = "";
+            }, 3000); // 3 seconds
+
+
+
           }
         } else {
           throw new Error(`HTTPS ERROR STATUS ${response.status}`);

@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (response.authResponse) {
           const accessToken = response.authResponse.accessToken;
           const redirect =
-            new URLSearchParams(window.location.search).get("redirect") || "/";
+            new URLSearchParams(window.location.search).get("redirect") || "";
 
           (async () => {
             try {
