@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
             document.querySelector("body").appendChild(div);
 
             setTimeout(() => {
-              window.location.href = "./payment.php";
+              window.location.href = "./api/payment.php";
             }, 2000);
           } else {
             const currentPage = encodeURIComponent(window.location.pathname);
