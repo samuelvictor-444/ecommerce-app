@@ -8,7 +8,7 @@ if ($product_slug) {
                sc.name AS subcategory_name, sc.slug AS subcategory_slug,
                c.name AS category_name, c.slug AS category_slug
         FROM products p
-        JOIN subCategories sc ON p.subcategory_id = sc.id
+        JOIN subcategories sc ON p.subcategory_id = sc.id
         JOIN categories c ON sc.category_id = c.id
         WHERE p.slug = :slug";
 
