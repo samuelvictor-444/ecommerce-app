@@ -54,6 +54,11 @@ window.addEventListener("DOMContentLoaded", () => {
         otpErrorMsg.textContent = result.message || "Failed to resend OTP";
         resendEmailBtn.disabled = false;
         resendSmsBtn.disabled = false;
+
+        setTimeout(() => {
+          otpErrorMsg.textContent = "";
+        }, 4000);
+
         return;
       }
 

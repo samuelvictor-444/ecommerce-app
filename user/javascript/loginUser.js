@@ -356,6 +356,7 @@ window.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             window.location.href = result.redirect;
           }, 4000);
+
         } else {
           stopProgress();
           verifyOptBtn.classList.remove("disabled");
@@ -364,6 +365,11 @@ window.addEventListener("DOMContentLoaded", () => {
           document.querySelector("#otp_error_msg").textContent = result.message;
           otpInputs.forEach((input) => (input.value = ""));
           otpInputs[0].focus();
+
+          setTimeout(() => {
+              document.querySelector("#otp_error_msg").textContent = "";
+          },4000);
+
         }
       } else {
         throw new Error(`HTTPS ERROR STATUS ${response.status}`);
