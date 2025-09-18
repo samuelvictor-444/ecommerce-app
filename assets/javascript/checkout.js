@@ -18,9 +18,38 @@ window.addEventListener("DOMContentLoaded", () => {
             div.appendChild(loader);
             document.querySelector("body").appendChild(div);
 
-            setTimeout(() => {
-              window.location.href = "./api/payment.php";
-            }, 2000);
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            try {
+              let response = await fetch("./api/payment.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cart }),
+              });
+
+              if (response.ok) {
+                const data = await response.json();
+
+                if (data.success) {
+                  if (data.redirect_url) {
+                    setTimeout(() => {
+                      document.querySelector("body").removeChild(div);
+                      window.location.href = data.redirect_url;
+                    }, 3000);
+                  } else {
+                    document.querySelector("body").removeChild(div);
+                    console.error(data.message);
+                  }
+                } else {
+                  document.querySelector("body").removeChild(div);
+                  console.log(data.message);
+                }
+              } else {
+                throw new Error(`HTTPS ERROR STATUS ${response.status}`);
+              }
+            } catch (error) {
+              console.error("error occured while sending cart details", error);
+            }
           } else {
             const currentPage = encodeURIComponent(window.location.pathname);
             window.location.href = `user/loginUser.php?redirect=${currentPage}`;
