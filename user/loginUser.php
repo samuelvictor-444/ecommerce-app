@@ -82,7 +82,7 @@
                         <div class="social_login">
 
                          <div class="login_mdc">
-                                <a href="./signUpUser.php?redirect=<?php echo htmlspecialchars($_GET['redirect'] ?? 'index.php');  ?>">Create an Account</a>
+                                <a href="./signUpUser.php?redirect=<?php echo htmlspecialchars($_GET['redirect'] ?? '../index.php');  ?>">Create an Account</a>
                             </div>
 
                             <div class="login_mdc">
@@ -122,11 +122,17 @@
 
                     </div>
 
-                    <!-- <div class=" _not_ice">
+                     <div class=" _not_ice">
                                 <div>
                                     <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
                                 </div>
-                        </div> -->
+                        </div> 
+
+
+                        
+                    <div class="log_bott">
+                        <img src="../assets/images/icon2.png" alt="" width="24px">
+                    </div>
 
 
                     </div>
@@ -217,6 +223,10 @@
                         <div>
                             <p class="_notice">For further support, you may visit the Help Center or contact our customer service team.</p>
                         </div>
+                    </div>
+
+                     <div class="log_bott">
+                        <img src="../assets/images/icon2.png" alt="" width="24px">
                     </div>
 
                 </div>

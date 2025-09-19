@@ -14,14 +14,12 @@ body {
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;
-  max-width: 100vw;
-  min-width: 100vw;
-  width: 100vw;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
   font-family: "Roboto", sans-serif;
-  height: 100vh;
   margin: 0 auto;
-  max-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container_wrapper_sign_in_sign_up {
@@ -315,7 +313,7 @@ button {
   position: relative;
 }
 
-#email_input {
+#email_input  , #input_{
   position: relative;
 }
 
@@ -341,7 +339,8 @@ button {
 }
 
 #email_input p,
-#pwd_input p, #pwd_input_reset p {
+#pwd_input p,
+#pwd_input_reset p {
   font-size: 13px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 3px;
@@ -566,6 +565,13 @@ button {
   background-color: transparent;
   color: #f8982d;
 }
+
+
+
+/* sign up user styles */
+
+
+/* sign up user styles */
 
 @media screen and (max-width : 1199px) {
   body {

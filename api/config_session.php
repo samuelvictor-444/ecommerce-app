@@ -14,6 +14,8 @@ $cookieParams = [
 ];
 session_set_cookie_params($cookieParams);
 
+define("PAYSTACK_SECRET_KEY","sk_test_5ee577d576e335158c9260ae257fd54785dc6611");
+
 // Start or resume session
 session_name("MySecureSession");
 session_start();

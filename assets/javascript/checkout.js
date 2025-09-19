@@ -3,63 +3,63 @@ window.addEventListener("DOMContentLoaded", () => {
 
   checkOutBtns.forEach((checkOutBtn) => {
     checkOutBtn.addEventListener("click", async () => {
+      const loaderDiv = document.createElement("div");
+      loaderDiv.classList.add("inProgress");
+      loaderDiv.innerHTML = `<div class="loader"></div>`;
+      document.body.appendChild(loaderDiv);
+
       try {
-        const response = await fetch("api/checkIsUserLogin.php");
+        const loginResponse = await fetch("api/checkIsUserLogin.php");
+        if (!loginResponse.ok)
+          throw new Error(`Login check failed: ${loginResponse.status}`);
 
-        if (response.ok) {
-          const result = await response.json();
-          if (result.success) {
-            const div = document.createElement("div");
-            div.classList.add("inProgress");
+        const loginResult = await loginResponse.json();
+        if (!loginResult.success) {
+          window.location.href = `user/loginUser.php?redirect=${encodeURIComponent(
+            window.location.pathname
+          )}`;
+          return;
+        }
 
-            const loader = document.createElement("div");
-            loader.classList.add("loader");
+        let cart = [];
+        try {
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          if (!cart.length) throw new Error("Cart is empty");
+        } catch (e) {
+          console.error("Invalid cart in localStorage", e);
+          return;
+        }
 
-            div.appendChild(loader);
-            document.querySelector("body").appendChild(div);
+        const paymentResponse = await fetch("./api/payment.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cart }),
+        });
 
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (!paymentResponse.ok)
+          throw new Error(`Payment init failed: ${paymentResponse.status}`);
 
-            try {
-              let response = await fetch("./api/payment.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cart }),
-              });
+        const paymentResult = await paymentResponse.json();
 
-              if (response.ok) {
-                const data = await response.json();
-
-                if (data.success) {
-                  if (data.redirect_url) {
-                    setTimeout(() => {
-                      document.querySelector("body").removeChild(div);
-                      window.location.href = data.redirect_url;
-                    }, 3000);
-                  } else {
-                    document.querySelector("body").removeChild(div);
-                    console.error(data.message);
-                  }
-                } else {
-                  document.querySelector("body").removeChild(div);
-                  console.log(data.message);
-                }
-              } else {
-                throw new Error(`HTTPS ERROR STATUS ${response.status}`);
-              }
-            } catch (error) {
-              console.error("error occured while sending cart details", error);
-            }
-          } else {
-            const currentPage = encodeURIComponent(window.location.pathname);
-            window.location.href = `user/loginUser.php?redirect=${currentPage}`;
-          }
+        if (paymentResult.success && paymentResult.payment_url) {
+          console.log(paymentResult.message);
+          setTimeout(() => {
+            const loaderDiv = document.querySelector(".inProgress");
+            if (loaderDiv) loaderDiv.remove();
+            window.location.href = paymentResult.payment_url;
+          }, 3000);
         } else {
-          throw new Error(`HTTPS ERROR STATUS ${response.status}`);
+          console.error(
+            paymentResult.message || "Payment initialization failed"
+          );
         }
       } catch (error) {
-        console.log("error while if user is loginIn ", error);
+        console.error("Checkout error:", error);
+      } finally {
+        const loader = document.querySelector(".inProgress");
+        if (loader) loader.remove();
       }
     });
+
   });
 });

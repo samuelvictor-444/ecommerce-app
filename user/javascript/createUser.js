@@ -41,6 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if(password.length < 8 ) {
+      alert("your password is too short");
+      return;
+    }
+
     const formData = document.querySelector("#createUser");
 
     const createUser = new FormData(formData);
