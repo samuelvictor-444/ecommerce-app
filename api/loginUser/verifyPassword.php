@@ -1,7 +1,7 @@
 <?php
 require_once "../config_session.php";
 
-ini_set('display_errors', 0); // don't output PHP errors to browser
+ini_set('display_errors', 1); // don't output PHP errors to browser
 error_reporting(E_ALL);
 
 header("Content-Type: application/json");
