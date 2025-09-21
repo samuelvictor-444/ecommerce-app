@@ -7,7 +7,7 @@ ini_set('session.use_strict_mode', 1);
 $cookieParams = [
     'lifetime' => 1800,       // 30 minutes
     'path'     => '/',         // accessible site-wide
-    'domain'   => 'samueldev.rf.gd',          // <-- empty = works for localhost, 127.0.0.1, or custom host
+    'domain'   => 'abaprice.rf.gd',          // <-- empty = works for localhost, 127.0.0.1, or custom host
     'secure'   => true,       // true on HTTPS, false for localhost testing
     'httponly' => true,        // JavaScript cannot access
     'samesite' => 'Strict'     // prevent CSRF

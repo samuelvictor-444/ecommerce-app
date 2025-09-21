@@ -187,7 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // 4. Initialize Payment
                 $paystackRef = uniqid("order_" . $orderId . "_");
                 $paystackSecret = PAYSTACK_SECRET_KEY;
-                $callbackUrl = "https://" . $_SERVER["HTTP_HOST"] . "/api/verify_payment.php";
+              #  $callbackUrl = "https://" . $_SERVER["HTTP_HOST"] . "/api/verify_payment.php";
+                $callbackUrl = "https://usman_clothing_servicehttps://abaprice.rf.gd/?i=1/api/verify_payment.php";
                 $userEmail = $_SESSION["user_email"];
 
                 $postData = [
