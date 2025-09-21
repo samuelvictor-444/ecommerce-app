@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
 header("Content-Type: application/json; charset=UTF-8");
 
 // Suppress PHP output
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 // Helper functions
