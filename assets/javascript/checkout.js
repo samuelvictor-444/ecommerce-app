@@ -59,6 +59,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const loader = document.querySelector(".inProgress");
         if (loader) loader.remove();
       }
+      
     });
 
   });

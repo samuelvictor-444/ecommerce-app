@@ -52,7 +52,7 @@ function sendSuccess($data)
 }
 
 if ($_SERVER['HTTP_HOST'] !== 'localhost' && (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on')) {
-    $redirect = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $redirect = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     header("Location: $redirect");
     exit();
 }
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $cart = $input["cart"] ?? [];
 
-            // Example inside your try/catch or validations:
+
             if (!is_array($cart) || empty($cart)) {
                 sendError("Cart is empty", ['user_id' => $_SESSION['user_id'] ?? null, 'cart' => $cart]);
             }
@@ -157,6 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         ':price' => $price,
                         ':subtotal' => $subtotal
                     ]);
+
                     $orderItemId = $pdo->lastInsertId();
 
 
@@ -187,16 +188,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // 4. Initialize Payment
                 $paystackRef = uniqid("order_" . $orderId . "_");
                 $paystackSecret = PAYSTACK_SECRET_KEY;
-              #  $callbackUrl = "https://" . $_SERVER["HTTP_HOST"] . "/api/verify_payment.php";
-                $callbackUrl = "https://localhost/usman_clothing_service/api/verify_payment.php";
+                #  $callbackUrl = "https://" . $_SERVER["HTTP_HOST"] . "/api/verify_payment.php";
+                $callbackUrl = "http://localhost/usman_clothing_service/api/verify_payment.php";
                 $userEmail = $_SESSION["user_email"];
+
 
                 $postData = [
                     "email" => $userEmail,
-                    "amount" => intval($totalAmount * 100),
+                    "amount" => intval($totalAmount * 100), // kobo
                     "reference" => $paystackRef,
-                    "callback_url" => $callbackUrl
+                    "callback_url" => $callbackUrl,
+                    "metadata" => [
+                        "order_id" => $orderId,
+                        "user_id"  => $userId,
+                        "cart"     => $cart // optional, you can store cart snapshot too
+                    ]
                 ];
+
 
                 $maxRetries = 3;
                 $attempt = 0;

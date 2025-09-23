@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Confirmation</title>
+
+    <style>
+      @media only screen and (max-width: 620px) {
+        table.main-table {
+          width: 100% !important;
+        }
+        td.pad {
+          padding: 10px !important;
+        }
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    "
+  >
+    <table width="100%" bgcolor="#f5f5f5" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center">
+          <!-- Main container -->
+          <table
+            class="main-table"
+            width="600"
+            bgcolor="#ffffff"
+            cellpadding="20"
+            cellspacing="0"
+            style="border-radius: 8px; margin-top: 30px; max-width: 600px"
+          >
+            <!-- Header -->
+            <tr>
+              <td align="center" style="border-bottom: 1px solid #e0e0e0">
+                <h2 style="color: #28a745; margin: 0">
+                  Thank you for your order!
+                </h2>
+                <p style="margin: 5px 0; color: #555">Order #{{OrderID}}</p>
+              </td>
+            </tr>
+
+            <!-- Body -->
+            <tr>
+              <td class="pad">
+                <p style="margin: 0 0 10px 0">
+                  Hi <strong>{{CustomerName}}</strong>,
+                </p>
+                <p style="margin: 0 0 15px 0">
+                  We have received your payment and your order is now confirmed.
+                  Here are your order details:
+                </p>
+
+                <!-- Order Items Table -->
+                <table
+                  style="
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                  "
+                >
+                  <thead>
+                    <tr style="background-color: #f0f0f0">
+                      <th
+                        style="
+                          border: 1px solid #ddd;
+                          text-align: left;
+                          padding: 8px;
+                        "
+                      >
+                        Image
+                      </th>
+                      <th
+                        style="
+                          border: 1px solid #ddd;
+                          text-align: left;
+                          padding: 8px;
+                        "
+                      >
+                        Product Name
+                      </th>
+                      <th
+                        style="
+                          border: 1px solid #ddd;
+                          text-align: center;
+                          padding: 8px;
+                        "
+                      >
+                        Qty
+                      </th>
+                      <th
+                        style="
+                          border: 1px solid #ddd;
+                          text-align: right;
+                          padding: 8px;
+                        "
+                      >
+                        Price
+                      </th>
+                      <th
+                        style="
+                          border: 1px solid #ddd;
+                          text-align: right;
+                          padding: 8px;
+                        "
+                      >
+                        Subtotal
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{OrderItems}}
+                  </tbody>
+                </table>
+
+                <!-- Total -->
+                <p style="text-align: right; margin-top: 10px; font-size: 16px">
+                  <strong>Total: {{TotalAmount}}</strong>
+                </p>
+
+                <!-- Track order link -->
+                <p style="margin-top: 20px">
+                  You can track your order
+                  <a
+                    href="https://yourdomain.com/user/track_order.php?order_id={{OrderID}}"
+                    style="color: #28a745"
+                    >here</a
+                  >.
+                </p>
+
+                <p style="margin-top: 20px">
+                  Thanks for shopping with us!<br />
+                  The Usman Clothing Service Team
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                align="center"
+                style="
+                  border-top: 1px solid #e0e0e0;
+                  font-size: 12px;
+                  color: #888;
+                "
+              >
+                &copy; 2025 Usman Clothing Service. All rights reserved.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

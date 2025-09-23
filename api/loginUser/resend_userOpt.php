@@ -22,51 +22,53 @@ function sendError($errorMgs)
     exit;
 }
 
+if (is_logged_in()) {
+    if (isset($_SESSION['user_email'])) {
+        $input = json_decode(file_get_contents("php://input"), true);
+        $type = $input["type"] ?? "email";
 
-if (isset($_SESSION['user_email'])) {
-    $input = json_decode(file_get_contents("php://input"), true);
-    $type = $input["type"] ?? "email";
+        $userEmail = $_SESSION['user_email'];
 
-    $userEmail = $_SESSION['user_email'];
+        require_once "../includes/dbh.inc.php";
+        require_once "./includes/logIn_modal.inc.php";
+        require_once "./includes/logIn_contr.inc.php";
+        require_once "../includes/otp_generate.php";
+        require_once "../includes/send_email.php";
+        require_once "../includes/send_otpSms.php";
+        require_once "./mask_email.php";
 
-    require_once "../includes/dbh.inc.php";
-    require_once "./includes/logIn_modal.inc.php";
-    require_once "./includes/logIn_contr.inc.php";
-    require_once "../includes/otp_generate.php";
-    require_once "../includes/send_email.php";
-    require_once "../includes/send_otpSms.php";
-    require_once "./mask_email.php";
+        $user = get_user($userEmail,  $pdo);
 
-    $user = get_user($userEmail,  $pdo);
-
-    if (!$user) {
-        echo json_encode([
-            'success' => false,
-            'message' => 'User not found'
-        ]);
-        exit;
-    }
-
-
-    if ($type === "email") {
-        $subject = "Your OTP Code resend";
-        $body = "<p>Your OTP code is: <strong>$otp</strong></p>";
-
-        $maskedEmail = maskUserEmail($user['email']);
-
-
-        if (sendEmail($user['email'], $user['firstName'], $subject, $body)) {
-            sendSuccess("We have resent a verification code to {$maskedEmail}", $user['email']);
-        } else {
-            sendError("We couldn't resend your OTP email at the moment. Please try again later.");
+        if (!$user) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'User not found'
+            ]);
+            exit;
         }
 
-        $pdo = null;
-    } elseif ($type === "sms") {
-        sendError("SMS OTP not implemented yet. Will be enabled once wallet is funded.");
+
+        if ($type === "email") {
+            $subject = "Your OTP Code resend";
+            $body = "<p>Your OTP code is: <strong>$otp</strong></p>";
+
+            $maskedEmail = maskUserEmail($user['email']);
+
+
+            if (sendEmail($user['email'], $user['firstName'], $subject, $body)) {
+                sendSuccess("We have resent a verification code to {$maskedEmail}", $user['email']);
+            } else {
+                sendError("We couldn't resend your OTP email at the moment. Please try again later.");
+            }
+
+            $pdo = null;
+        } elseif ($type === "sms") {
+            sendError("SMS OTP not implemented yet. Will be enabled once wallet is funded.");
+        }
+    } else {
+
+        sendError("Email not provided");
     }
 } else {
-
-    sendError("Email not provided");
-    exit;
+    sendError("user not logged in");
 }

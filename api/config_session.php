@@ -10,7 +10,7 @@ $cookieParams = [
     'domain'   => 'abaprice.rf.gd',          // <-- empty = works for localhost, 127.0.0.1, or custom host
     'secure'   => true,       // true on HTTPS, false for localhost testing
     'httponly' => true,        // JavaScript cannot access
-    'samesite' => 'Strict'     // prevent CSRF
+    'samesite' => 'Lax'     // prevent CSRF
 ];
 session_set_cookie_params($cookieParams);
 
